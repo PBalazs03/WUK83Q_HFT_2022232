@@ -7,6 +7,7 @@ namespace WUK83Q_HFT_2022232.Repository
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Console.WriteLine("test");
         }
     }
 }
