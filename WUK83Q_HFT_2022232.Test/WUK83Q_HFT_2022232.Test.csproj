@@ -7,8 +7,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WUK83Q_HFT_2022232.Logic\WUK83Q_HFT_2022232.Logic.csproj" />
-    <ProjectReference Include="..\WUK83Q_HFT_2022232.Models\WUK83Q_HFT_2022232.Models.csproj" />
-    <ProjectReference Include="..\WUK83Q_HFT_2022232.Repository\WUK83Q_HFT_2022232.Repository.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "WUK83Q_HFT_2022232.Models": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:57561;http://localhost:57562"
+    }
+  }
+}
