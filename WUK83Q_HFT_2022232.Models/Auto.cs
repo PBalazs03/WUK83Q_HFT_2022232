@@ -14,25 +14,29 @@ namespace WUK83Q_HFT_2022232.Models
         public int AutoId { get; set; }
 
         [Required]
-        public string Brand { get; set; }
-        [Required]
         public string Type { get; set; }
-        public int OwnerId { get; set; }
-        public virtual OwnerInfos Owner { get; set; }
-
         public int Vintage { get; set; } //évjárat
-        ///
+        public int HorsePower { get; set; }
+        public int CylinderVolume { get; set; }
+        public string Fuel { get; set; }
+        public string TechnicalValidity { get; set; }
+
+        [ForeignKey(nameof(Owner))]
+        public int OwnerId { get; set; }
+
+        [ForeignKey(nameof(Brand))]
+        public int BrandId { get; set; }
         
-
-        [JsonIgnore]
-        public virtual ICollection<AutoProperties> AutoInfos { get; set; }
-
+        public virtual Owner Owner { get; set; }
+        public virtual Brand Brand { get; set; }
+     
+        
         public Auto()
         {
             
         }
 
-        public Auto(int autoId, string brand, string type, int ownerId, int vintage, int horsePower, int cylinderVolume)
+        public Auto(string brand, string type, int vintage, int ownerId, int autoId)
         {
             AutoId = autoId;
             Brand = brand;

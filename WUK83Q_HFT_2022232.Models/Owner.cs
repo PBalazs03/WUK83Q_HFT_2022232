@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace WUK83Q_HFT_2022232.Models
 {
-    public class OwnerInfos
+    public class Owner
     {
-        
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OwnerId { get; set; }
@@ -21,19 +19,19 @@ namespace WUK83Q_HFT_2022232.Models
         public string Name { get; set; }
         public string BirthDate { get; set; }
         public string BirthPlace { get; set; }
-        public string Address { get; set; }
+        //public string Address { get; set; }
         [JsonIgnore]
         public virtual ICollection<Auto> Autos { get; set; }
 
-        public OwnerInfos(int ownerId, string name, string birthDate, string birthPlace, string address)
+        public Owner(string name, string birthDate, string birthPlace, int ownerId)
         {
-            OwnerId = ownerId;
             Name = name;
             BirthDate = birthDate;
             BirthPlace = birthPlace;
-            Address = address;
+            //Address = address;
+            OwnerId = ownerId;
         }
-        public OwnerInfos()
+        public Owner()
         {
             
         }
