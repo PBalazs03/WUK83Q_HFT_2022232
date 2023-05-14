@@ -6,9 +6,9 @@ namespace WUK83Q_HFT_2022232.Repository
 {
     public class AutoDbContext : DbContext
     {
-        public DbSet<Auto> _Autos { get; set; }
-        public DbSet<Brand> _AutoProperties { get; set; }
-        public DbSet<Owner> _OwnerInfos { get; set; }
+        public DbSet<Auto> AutosTable { get; set; }
+        public DbSet<Brand> BrandsTable { get; set; }
+        public DbSet<Owner> OwnersTable { get; set; }
 
         public AutoDbContext()
         {
@@ -106,7 +106,7 @@ namespace WUK83Q_HFT_2022232.Repository
                 new Brand(15, "Aston Martin", "England", 1913, false, true),
                 new Brand(16, "Ford", "Germany", 1903, true, true),
             }) ;
-            //base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using WUK83Q_HFT_2022232.Models;
+using WUK83Q_HFT_2022232.Repository;
 
 namespace WUK83Q_HFT_2022232.Client
 {
@@ -7,6 +9,12 @@ namespace WUK83Q_HFT_2022232.Client
     {
         static void Main(string[] args)
         {
+            AutoDbContext ctx = new AutoDbContext();
+
+            var item = ctx.AutosTable.ToArray();
+
+            ;
+
             //static ActorLogic actorLogic;
             //static RoleLogic roleLogic;
             //static DirectorLogic directorLogic;
