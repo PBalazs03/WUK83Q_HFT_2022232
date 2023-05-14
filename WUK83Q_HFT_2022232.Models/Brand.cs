@@ -17,6 +17,7 @@ namespace WUK83Q_HFT_2022232.Models
         public string OriginOfBrand { get; set; }
         public int BornOfBrand { get; set; }
         public bool IsProducingFullyElectricCars { get; set; }
+        public bool HasFormula1Team { get; set; }
         public virtual ICollection<Auto> Autos { get; set; }
 
         public Brand()
@@ -24,7 +25,14 @@ namespace WUK83Q_HFT_2022232.Models
             
         }
 
-       
-
+        public Brand(int brandId, string brandName, string originOfBrand, int bornOfBrand, bool isProducingFullyElectricCars, bool hasFormula1Team)
+        {
+            BrandId = brandId;
+            BrandName = brandName;
+            OriginOfBrand = originOfBrand;
+            BornOfBrand = bornOfBrand;
+            IsProducingFullyElectricCars = isProducingFullyElectricCars;
+            HasFormula1Team = hasFormula1Team;
+        }
     }
 }

@@ -5,8 +5,4 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\WUK83Q_HFT_2022232.Logic\WUK83Q_HFT_2022232.Logic.csproj" />
-  </ItemGroup>
-
 </Project>

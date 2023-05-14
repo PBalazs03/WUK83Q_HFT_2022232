@@ -12,7 +12,8 @@ namespace WUK83Q_HFT_2022232.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AutoId { get; set; }
-
+        [Required]
+        public string Brand { get; set; }
         [Required]
         public string Type { get; set; }
         public int Vintage { get; set; } //évjárat
@@ -22,13 +23,13 @@ namespace WUK83Q_HFT_2022232.Models
         public string TechnicalValidity { get; set; }
 
         [ForeignKey(nameof(Owner))]
-        public int OwnerId { get; set; }
+        public int OwnerId { get; set; }  // idegen kulcs
 
         [ForeignKey(nameof(Brand))]
-        public int BrandId { get; set; }
+        public int BrandId { get; set; }  // idegen kulcs
         
-        public virtual Owner Owner { get; set; }
-        public virtual Brand Brand { get; set; }
+        public virtual Owner _Owner { get; set; }
+        public virtual Brand _Brand { get; set; }
      
         
         public Auto()
@@ -39,7 +40,7 @@ namespace WUK83Q_HFT_2022232.Models
         public Auto(string brand, string type, int vintage, int ownerId, int autoId)
         {
             AutoId = autoId;
-            Brand = brand;
+            //Brand = brand;
             Type = type;
             OwnerId = ownerId;
             Vintage = vintage;
@@ -48,7 +49,7 @@ namespace WUK83Q_HFT_2022232.Models
 
         public Auto(string brand, string type, int ownerId, int vintage)
         {
-            Brand = brand;
+            //Brand = brand;
             Type = type;
             OwnerId = ownerId;
             Vintage = vintage;
