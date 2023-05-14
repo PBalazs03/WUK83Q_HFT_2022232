@@ -9,4 +9,8 @@
     <ProjectReference Include="..\WUK83Q_HFT_2022232.Repository\WUK83Q_HFT_2022232.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
 </Project>

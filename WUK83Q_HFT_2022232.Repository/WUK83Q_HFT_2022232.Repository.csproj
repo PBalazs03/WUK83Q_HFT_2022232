@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="autos.mdf" />
-    <None Remove="autos_log.ldf" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="autos.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

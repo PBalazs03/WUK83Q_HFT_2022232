@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WUK83Q_HFT_2022232.Models;
+using WUK83Q_HFT_2022232.Repository;
 
-namespace WUK83Q_HFT_2022232.Repository.ModelRepositories
+namespace WUK83Q_HFT_2022232.Repository
 {
     public class OwnerRepository : Repository<Owner>, IRepository<Owner>
     {
