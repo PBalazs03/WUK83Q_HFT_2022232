@@ -5,7 +5,7 @@ using WUK83Q_HFT_2022232.Repository;
 
 namespace WUK83Q_HFT_2022232.Logic
 {
-    public class AutoLogic
+    public class AutoLogic   // kell saját inteface     // ebben vannak noncrud metodusok
     {
         IRepository<Auto> repo;
 

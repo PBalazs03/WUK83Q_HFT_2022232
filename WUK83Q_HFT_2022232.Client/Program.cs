@@ -15,6 +15,9 @@ namespace WUK83Q_HFT_2022232.Client
 
             ;
 
+
+            // Logic osztályok és interfacek lepéldányosítása
+
             //static ActorLogic actorLogic;
             //static RoleLogic roleLogic;
             //static DirectorLogic directorLogic;

@@ -8,7 +8,7 @@ using WUK83Q_HFT_2022232.Repository;
 
 namespace WUK83Q_HFT_2022232.Logic
 {
-    public class BrandLogic
+    public class BrandLogic  // Saját interface kell
     {
         IRepository<Brand> repo;
         public BrandLogic(IRepository<Brand> repo)

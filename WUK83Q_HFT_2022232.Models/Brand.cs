@@ -18,6 +18,9 @@ namespace WUK83Q_HFT_2022232.Models
         public int BornOfBrand { get; set; }
         public bool IsProducingFullyElectricCars { get; set; }
         public bool HasFormula1Team { get; set; }
+        public int ConcernId { get; set; } //idegen kulcs
+
+        public virtual Concern _Concern { get; set; }
         public virtual ICollection<Auto> Autos { get; set; }
 
         public Brand()

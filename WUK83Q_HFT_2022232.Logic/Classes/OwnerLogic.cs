@@ -8,7 +8,7 @@ using WUK83Q_HFT_2022232.Repository;
 
 namespace WUK83Q_HFT_2022232.Logic
 {
-    public class OwnerLogic
+    public class OwnerLogic   //  saját interface kell
     {
         IRepository<Owner> repo;
         public OwnerLogic(IRepository<Owner> repo)
