@@ -9,6 +9,7 @@ namespace WUK83Q_HFT_2022232.Repository
         public DbSet<Auto> AutosTable { get; set; }
         public DbSet<Brand> BrandsTable { get; set; }
         public DbSet<Owner> OwnersTable { get; set; }
+        public DbSet<Concern> ConcernsTable { get; set; }
 
         public AutoDbContext()
         {
@@ -38,6 +39,11 @@ namespace WUK83Q_HFT_2022232.Repository
                 .HasForeignKey(t => t.BrandId) 
                 .OnDelete(DeleteBehavior.Cascade);
                 
+            modelBuilder.Entity<Concern>()
+                .HasMany(t => t.Brands)
+                .WithOne(t => t._Concern)
+                .HasForeignKey(t => t.ConcernId)
+                .OnDelete(DeleteBehavior.Cascade);
 
 
             ////////   DbSeed   ////////

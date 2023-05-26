@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -7,10 +7,6 @@
   <ItemGroup>
     <ProjectReference Include="..\WUK83Q_HFT_2022232.Models\WUK83Q_HFT_2022232.Models.csproj" />
     <ProjectReference Include="..\WUK83Q_HFT_2022232.Repository\WUK83Q_HFT_2022232.Repository.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
   </ItemGroup>
 
 </Project>
