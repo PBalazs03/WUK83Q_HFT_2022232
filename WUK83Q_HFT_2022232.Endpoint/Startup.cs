@@ -10,6 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using WUK83Q_HFT_2022232.Logic;
+using WUK83Q_HFT_2022232.Models;
+using WUK83Q_HFT_2022232.Repository;
 
 namespace WUK83Q_HFT_2022232.Endpoint
 {
@@ -25,6 +28,19 @@ namespace WUK83Q_HFT_2022232.Endpoint
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<AutoDbContext>();
+
+            services.AddTransient<IRepository<Auto>, AutoRepository>();
+            services.AddTransient<IRepository<Brand>, BrandRepository>();
+            services.AddTransient<IRepository<Concern>, ConcernRepository>();
+            services.AddTransient<IRepository<Owner>, OwnerRepository>();
+
+            services.AddTransient<IAutoLogic, AutoLogic>();
+            services.AddTransient<IBrandLogic, BrandLogic>();
+            services.AddTransient<IConcernLogic, ConcernLogic>();
+            services.AddTransient<IOwnerLogic, OwnerLogic>();
+
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

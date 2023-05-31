@@ -8,7 +8,7 @@ using WUK83Q_HFT_2022232.Repository;
 
 namespace WUK83Q_HFT_2022232.Logic
 {
-    public class OwnerLogic   //  saját interface kell
+    public class OwnerLogic : IOwnerLogic//  saját interface kell
     {
         IRepository<Owner> repo;
         public OwnerLogic(IRepository<Owner> repo)
@@ -30,6 +30,16 @@ namespace WUK83Q_HFT_2022232.Logic
         {
 
             return this.repo.Read(id);
+        }
+
+        public IQueryable<Owner> ReadAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Owner item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -8,7 +8,7 @@ using WUK83Q_HFT_2022232.Repository;
 
 namespace WUK83Q_HFT_2022232.Logic
 {
-    public class BrandLogic  // Saját interface kell
+    public class BrandLogic : IBrandLogic // Saját interface kell
     {
         IRepository<Brand> repo;
         public BrandLogic(IRepository<Brand> repo)
@@ -30,6 +30,16 @@ namespace WUK83Q_HFT_2022232.Logic
         {
            
             return this.repo.Read(id);
+        }
+
+        public IQueryable<Brand> ReadAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Brand item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

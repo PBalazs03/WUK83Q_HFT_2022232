@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using WUK83Q_HFT_2022232.Logic;
 
 namespace WUK83Q_HFT_2022232.Endpoint.Controllers
 {
@@ -9,6 +10,12 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
     {
 
         IAutoLogic logic;
+
+        public AutoController(IAutoLogic logic)
+        {
+            this.logic = logic;
+        }
+
         // GET: api/<AutoController>
         [HttpGet]
         public IEnumerable<string> Get()

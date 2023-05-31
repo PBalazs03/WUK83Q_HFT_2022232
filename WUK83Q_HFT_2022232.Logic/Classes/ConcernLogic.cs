@@ -8,7 +8,7 @@ using WUK83Q_HFT_2022232.Repository;
 
 namespace WUK83Q_HFT_2022232.Logic
 {
-    public class ConcernLogic
+    public class ConcernLogic : IConcernLogic
     {
         IRepository<Concern> repo;
         public ConcernLogic(IRepository<Concern> repo)
@@ -30,6 +30,16 @@ namespace WUK83Q_HFT_2022232.Logic
         {
 
             return this.repo.Read(id);
+        }
+
+        public IQueryable<Concern> ReadAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Concern item)
+        {
+            throw new NotImplementedException();
         }
     }
 }
