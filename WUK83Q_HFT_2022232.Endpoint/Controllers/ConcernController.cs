@@ -3,41 +3,42 @@ using System.Collections.Generic;
 using WUK83Q_HFT_2022232.Logic;
 using WUK83Q_HFT_2022232.Models;
 
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace WUK83Q_HFT_2022232.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class AutoController : ControllerBase
+    public class ConcernController : ControllerBase
     {
+        IConcernLogic logic;
 
-        IAutoLogic logic;
-
-        public AutoController(IAutoLogic logic)
+        public ConcernController(IConcernLogic logic)
         {
             this.logic = logic;
         }
 
         [HttpGet]
-        public IEnumerable<Auto> ReadAll()
+        public IEnumerable<Concern> ReadAll()
         {
             return this.logic.ReadAll();
         }
 
-        
+
         [HttpGet("{id}")]
-        public Auto Read(int id)
+        public Concern Read(int id)
         {
             return this.logic.Read(id);
         }
 
         [HttpPost]
-        public void Create([FromBody] Auto value)
+        public void Create([FromBody] Concern value)
         {
             this.logic.Create(value);
         }
 
         [HttpPut]
-        public void Update([FromBody] Auto value)
+        public void Update([FromBody] Concern value)
         {
             this.logic.Update(value);
         }

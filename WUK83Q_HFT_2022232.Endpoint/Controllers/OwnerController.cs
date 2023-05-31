@@ -3,41 +3,41 @@ using System.Collections.Generic;
 using WUK83Q_HFT_2022232.Logic;
 using WUK83Q_HFT_2022232.Models;
 
+
 namespace WUK83Q_HFT_2022232.Endpoint.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class AutoController : ControllerBase
+    public class OwnerController : ControllerBase
     {
+        IOwnerLogic logic;
 
-        IAutoLogic logic;
-
-        public AutoController(IAutoLogic logic)
+        public OwnerController(IOwnerLogic logic)
         {
             this.logic = logic;
         }
 
         [HttpGet]
-        public IEnumerable<Auto> ReadAll()
+        public IEnumerable<Owner> ReadAll()
         {
             return this.logic.ReadAll();
         }
 
-        
+
         [HttpGet("{id}")]
-        public Auto Read(int id)
+        public Owner Read(int id)
         {
             return this.logic.Read(id);
         }
 
         [HttpPost]
-        public void Create([FromBody] Auto value)
+        public void Create([FromBody] Owner value)
         {
             this.logic.Create(value);
         }
 
         [HttpPut]
-        public void Update([FromBody] Auto value)
+        public void Update([FromBody] Owner value)
         {
             this.logic.Update(value);
         }
