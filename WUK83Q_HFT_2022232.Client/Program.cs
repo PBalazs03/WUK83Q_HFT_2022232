@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleTools;
+using System;
 using System.Linq;
 using WUK83Q_HFT_2022232.Logic;
 using WUK83Q_HFT_2022232.Models;
@@ -69,40 +70,40 @@ namespace WUK83Q_HFT_2022232.Client
                 concernLogic = new ConcernLogic(concernrepo);
                 ownerLogic = new OwnerLogic(ownerrepo);
 
-                var actorSubMenu = new ConsoleMenu(args, level: 1)
-                    .Add("List", () => List("Actor"))
-                    .Add("Create", () => List("Actor"))
-                    .Add("Delete", () => List("Actor"))
-                    .Add("Update", () => List("Actor"))
+                var autoSubMenu = new ConsoleMenu(args, level: 1)
+                    .Add("List", () => List("Auto"))
+                    .Add("Create", () => List("Auto"))
+                    .Add("Delete", () => List("Auto"))
+                    .Add("Update", () => List("Auto"))
                     .Add("Exit", ConsoleMenu.Close);
 
-                var roleSubMenu = new ConsoleMenu(args, level: 1)
-                    .Add("List", () => List("Role"))
-                    .Add("Create", () => List("Role"))
-                    .Add("Delete", () => List("Role"))
-                    .Add("Update", () => List("Role"))
+                var brandSubMenu = new ConsoleMenu(args, level: 1)
+                    .Add("List", () => List("Brand"))
+                    .Add("Create", () => List("Brand"))
+                    .Add("Delete", () => List("Brand"))
+                    .Add("Update", () => List("Brand"))
                     .Add("Exit", ConsoleMenu.Close);
 
-                var directorSubMenu = new ConsoleMenu(args, level: 1)
-                    .Add("List", () => List("Director"))
-                    .Add("Create", () => List("Director"))
-                    .Add("Delete", () => List("Director"))
-                    .Add("Update", () => List("Director"))
+                var concernSubMenu = new ConsoleMenu(args, level: 1)
+                    .Add("List", () => List("Concern"))
+                    .Add("Create", () => List("Concern"))
+                    .Add("Delete", () => List("Concern"))
+                    .Add("Update", () => List("Concern"))
                     .Add("Exit", ConsoleMenu.Close);
 
-                var movieSubMenu = new ConsoleMenu(args, level: 1)
-                    .Add("List", () => List("Movie"))
-                    .Add("Create", () => List("Movie"))
-                    .Add("Delete", () => List("Movie"))
-                    .Add("Update", () => List("Movie"))
+                var ownerSubMenu = new ConsoleMenu(args, level: 1)
+                    .Add("List", () => List("Owner"))
+                    .Add("Create", () => List("Owner"))
+                    .Add("Delete", () => List("Owner"))
+                    .Add("Update", () => List("Owner"))
                     .Add("Exit", ConsoleMenu.Close);
 
 
                 var menu = new ConsoleMenu(args, level: 0)
-                    .Add("Movies", () => movieSubMenu.Show())
-                    .Add("Actor", () => actorSubMenu.Show())
-                    .Add("Roles", () => roleSubMenu.Show())
-                    .Add("Director", () => directorSubMenu.Show())
+                    .Add("Owner", () => ownerSubMenu.Show())
+                    .Add("Auto", () => autoSubMenu.Show())
+                    .Add("Brands", () => brandSubMenu.Show())
+                    .Add("Concerns", () => concernSubMenu.Show())
                     .Add("Exit", ConsoleMenu.Close);
 
                 menu.Show();
