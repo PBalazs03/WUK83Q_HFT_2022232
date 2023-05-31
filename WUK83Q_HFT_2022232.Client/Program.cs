@@ -17,7 +17,7 @@ namespace WUK83Q_HFT_2022232.Client
         {
             AutoDbContext ctx = new AutoDbContext();
 
-            var item = ctx.AutosTable.ToArray();
+            var autos = ctx.AutosTable.ToArray();
 
             ;
 
