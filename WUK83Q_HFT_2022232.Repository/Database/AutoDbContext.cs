@@ -61,7 +61,11 @@ namespace WUK83Q_HFT_2022232.Repository
                 new Owner("Gazdag Imre", "1969.04.13.", "Szentendre", 10),
                 new Owner("Papp Elek", "1992.12.13.", "Győr", 11),
                 new Owner("Fekete József", "1970.01.04.", "Siófok", 12),
-                new Owner("Szegedi Péter", "1980.07.10.", "Szombathely", 13)
+                new Owner("Szegedi Péter", "1980.07.10.", "Szombathely", 13),
+                new Owner("Horváth Tamás", "1976.06.01.", "Piliscsaba", 14),
+                new Owner("Gáspár József", "1970.09.09.", "Gyömrő", 15),
+
+
             }) ;
 
             modelBuilder.Entity<Auto>().HasData(new Auto[]
@@ -90,7 +94,10 @@ namespace WUK83Q_HFT_2022232.Repository
                 new Auto("Nissan", "Micra", 2013, 13, 132),
                 new Auto("Opel", "Insignia", 2013, 13, 133),
                 new Auto("BMW", "I3", 2013, 12, 134),
-                new Auto("Toyota", "Celica", 1992, 12, 135)
+                new Auto("Toyota", "Celica", 1992, 12, 135),
+                new Auto("Tesla", "Model S", 2016, 14, 136),
+                new Auto("Volkswagen", "ID.3", 2022, 14, 137),
+                new Auto("Cadillac", "Escalade", 2013, 15, 138)
             }) ;
 
             modelBuilder.Entity<Brand>().HasData(new Brand[]
@@ -110,9 +117,42 @@ namespace WUK83Q_HFT_2022232.Repository
                 new Brand(13, "Ferrari", "Italy", 1947, false, true),
                 new Brand(14, "Alfa Romeo", "Italy", 1910, false, true),
                 new Brand(15, "Aston Martin", "England", 1913, false, true),
-                new Brand(16, "Ford", "Germany", 1903, true, true),
+                new Brand(16, "Ford", "Germany", 1903, true, false),
+                new Brand(17, "Tesla", "USA", 2003, true, false),
+                new Brand(18, "Cadillac", "USA", 1902, true, false),
             }) ;
+
+            modelBuilder.Entity<Concern>().HasData(new Concern[]{
+                new Concern(001, "Stellanois", 2021, "Netherland", 3),
+                new Concern(002, "Volkswagen AG", 1937, "Germany", 1),
+                new Concern(003, "Toyota", 1936, "Japan", 2),
+                new Concern(004, "Mercedes-Benz Group", 1926, "Germany", 4),
+                new Concern(005, "Ford Motor Company", 1903, "USA", 6),
+                new Concern(006, "Bayerische Motoren Werke AG", 1916, "Germany", 7),
+                new Concern(007, "Honda Motor Company", 1948, "Japan", 8),
+                new Concern(008, "General Motors", 1908, "USA", 9),
+                new Concern(009, "SAIC Motor", 1997, "China", 10),
+                new Concern(010, "Hyundai Motor Group", 1967, "South-Korea", 12),
+                new Concern(011, "Renault-Nissan-Mitsubishi", 2017, "France-Japan", 5),
+                new Concern(012, "Geely", 2017, "France-Japan", 13),
+                new Concern(013, "Suzuki", 1909, "Japan", 22),
+                new Concern(014, "Tesla", 2003, "USA", 19),
+
+
+
+            });
             base.OnModelCreating(modelBuilder);
+
+
+
+            //public Concern(int concernId, string concernName, int bornOfConcern, string countryOfTheConcern, int positionInRanking)
+            //{
+            //    ConcernId = concernId;
+            //    ConcernName = concernName;
+            //    BornOfConcern = bornOfConcern;
+            //    CountryOfConcern = countryOfTheConcern;
+            //    PositionInRanking = positionInRanking;
+            //}
         }
     }
 }

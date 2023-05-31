@@ -28,7 +28,7 @@ namespace WUK83Q_HFT_2022232.Models
             
         }
 
-        public Brand(int brandId, string brandName, string originOfBrand, int bornOfBrand, bool isProducingFullyElectricCars, bool hasFormula1Team)
+        public Brand(int brandId, string brandName, string originOfBrand, int bornOfBrand, bool isProducingFullyElectricCars, bool hasFormula1Team, int concernId)
         {
             BrandId = brandId;
             BrandName = brandName;
@@ -36,6 +36,7 @@ namespace WUK83Q_HFT_2022232.Models
             BornOfBrand = bornOfBrand;
             IsProducingFullyElectricCars = isProducingFullyElectricCars;
             HasFormula1Team = hasFormula1Team;
+            ConcernId = concernId;
         }
     }
 }
