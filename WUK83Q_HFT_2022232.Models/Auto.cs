@@ -17,7 +17,6 @@ namespace WUK83Q_HFT_2022232.Models
         [Required]
         public string Type { get; set; }
         public int Vintage { get; set; } 
-        public string Fuel { get; set; }
         
         [ForeignKey(nameof(Owner))]
         public int OwnerId { get; set; }  // idegen kulcs

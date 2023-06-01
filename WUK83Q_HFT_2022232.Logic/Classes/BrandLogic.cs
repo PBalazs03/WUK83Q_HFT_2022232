@@ -34,12 +34,14 @@ namespace WUK83Q_HFT_2022232.Logic
 
         public IQueryable<Brand> ReadAll()
         {
-            throw new NotImplementedException();
+           return this.repo.ReadAll();
         }
 
         public void Update(Brand item)
         {
-            throw new NotImplementedException();
+            this.repo.Update(item);
         }
+
+        
     }
 }

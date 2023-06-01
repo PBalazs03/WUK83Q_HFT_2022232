@@ -9,13 +9,7 @@ namespace WUK83Q_HFT_2022232.Client
 {
     internal class Program
     {
-
-
-
         static RestService rest;
-
-
-
 
         //public Auto(string brand, string type, int vintage, int ownerId, int autoId, int brandId)
         //{
@@ -350,28 +344,28 @@ namespace WUK83Q_HFT_2022232.Client
             switch(entity)
             {
                 case "Auto":
-                    List<Auto> cars = rest.Get<Auto>("auto");
+                    List<Auto> cars = rest.Get<Auto>("Auto");
                     foreach (var item in cars)
                     {
                         Console.WriteLine(item.AutoId + ": " + item.Brand + " " + item.Type + " | " + item.Vintage + " " + item.OwnerId + " " + item.AutoId + " " + item.BrandId);
                     }
                     break;
                 case "Brand":
-                    List<Brand> brands = rest.Get<Brand>("brand");
+                    List<Brand> brands = rest.Get<Brand>("Brand");
                     foreach (var item in brands)
                     {
                         Console.WriteLine(item.BrandId + ": " + item.BrandName + "| " + item.OriginOfBrand + " " + item.BornOfBrand + " " + item.IsProducingFullyElectricCars + " " + item.HasFormula1Team + " " + item.ConcernId);
                     }
                     break;
                 case "Owner":
-                    List<Owner> owners = rest.Get<Owner>("owner");
+                    List<Owner> owners = rest.Get<Owner>("Owner");
                     foreach (var item in owners)
                     {
                         Console.WriteLine(item.OwnerId + ": " + item.Name + "| " + item.BirthDate + " " + item.BirthPlace);
                     }
                     break;
                 case "Concern":
-                    List<Concern> concerns = rest.Get<Concern>("concern");
+                    List<Concern> concerns = rest.Get<Concern>("Concern");
                     foreach (var item in concerns)
                     {
                         Console.WriteLine(item.ConcernId + ": " + item.ConcernName + "| " + item.BornOfConcern + " " + item.CountryOfConcern + " " + item.PositionInRanking);
@@ -384,6 +378,33 @@ namespace WUK83Q_HFT_2022232.Client
            
         }
 
+        public List<Auto> GetAutosByOwner(int ownerId)
+        {
+            return rest.Get<Auto>("Auto").Where(a => a.OwnerId == ownerId).ToList();
+        }
+        public Auto GetOldestAuto()
+        {
+            return rest.Get<Auto>("Auto").OrderBy(a => a.Vintage).FirstOrDefault();
+        }
+        public int CountAutosByBrand(string brand)
+        {
+            return rest.Get<Auto>("Auto").Count(a => a._Brand.BrandName == brand);
+        }
+        //public Concern GetConcernByBrand(string brandName)
+        //{
+        //    //return rest.Get<Brand>("Brand")
+        //        //.Where(b => b._Concern)
+        //        //.Single(b => b.BrandName == brandName)
+        //        //._Concern;
+        //}
+
+        //public double GetAverageVintageByOwner(int ownerId)
+        //{
+        //    return _dbContext.Set<Owner>()
+        //        .Include(o => o.Autos)
+        //        .Single(o => o.OwnerId == ownerId)
+        //        .Autos.Average(a => a.Vintage);
+        //}
         static void Main(string[] args)
         {
             

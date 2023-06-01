@@ -47,11 +47,30 @@ namespace WUK83Q_HFT_2022232.Logic
         {
             this.repo.Update(item);
         }
+        #region NON-CRUD methods
+        public double? AverageVintage()
+        {
+            return this.repo.ReadAll().Average(car => car.Vintage);
+        }
+        public Auto YoungestOrOldestCar(char YoungOrOld)
+        {
+            if (YoungOrOld == 'y')
+            {
+                var minmax = repo.ReadAll().Select(m => m.Vintage);
+                return repo.ReadAll().Where(a => a.Vintage == minmax.Max()).FirstOrDefault();
+            }
+            else if (YoungOrOld == 'o')
+            {
+                var max = repo.ReadAll().Select(m => m.Vintage);
+                return repo.ReadAll().Where(a => a.Vintage == max.Min()).FirstOrDefault();
+            }
+            else
+            {
+                Console.WriteLine("Enter 'o' or 'y'!");
+                return null;
+            }
 
-
-        //////  NON-CRUD METHODS  //////
-        //  Average car age
-        //  Average horsepower
-        //  Formula 1 teams
+        }
+        #endregion
     }
 }
