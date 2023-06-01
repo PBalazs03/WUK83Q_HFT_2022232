@@ -47,7 +47,7 @@ namespace WUK83Q_HFT_2022232.Models
 
         public Auto(string brand, string type, int ownerId, int vintage)
         {
-            //Brand = brand;
+            
             Type = type;
             OwnerId = ownerId;
             Vintage = vintage;
