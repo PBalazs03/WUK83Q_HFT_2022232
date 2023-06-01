@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace WUK83Q_HFT_2022232.Models
@@ -21,6 +22,8 @@ namespace WUK83Q_HFT_2022232.Models
         public int ConcernId { get; set; } //idegen kulcs
 
         public virtual Concern _Concern { get; set; }
+
+        [JsonIgnore]
         public virtual ICollection<Auto> Autos { get; set; }
 
         public Brand()

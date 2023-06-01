@@ -16,12 +16,9 @@ namespace WUK83Q_HFT_2022232.Models
         public string Brand { get; set; }
         [Required]
         public string Type { get; set; }
-        public int Vintage { get; set; } //évjárat
-        //public int HorsePower { get; set; }
-        //public int CylinderVolume { get; set; }
+        public int Vintage { get; set; } 
         public string Fuel { get; set; }
-        //public string TechnicalValidity { get; set; }
-
+        
         [ForeignKey(nameof(Owner))]
         public int OwnerId { get; set; }  // idegen kulcs
 
