@@ -347,16 +347,41 @@ namespace WUK83Q_HFT_2022232.Client
 
         static void List(string entity)
         {
-            if (entity == "Auto")
+            switch(entity)
             {
-                List<Auto> cars = rest.Get<Auto>("auto");
-                foreach (var item in cars)
-                {
-                    Console.WriteLine(item.AutoId + ": " + item.Brand + " " + item.Type);
-                }
+                case "Auto":
+                    List<Auto> cars = rest.Get<Auto>("auto");
+                    foreach (var item in cars)
+                    {
+                        Console.WriteLine(item.AutoId + ": " + item.Brand + " " + item.Type + " | " + item.Vintage + " " + item.OwnerId + " " + item.AutoId + " " + item.BrandId);
+                    }
+                    break;
+                case "Brand":
+                    List<Brand> brands = rest.Get<Brand>("brand");
+                    foreach (var item in brands)
+                    {
+                        Console.WriteLine(item.BrandId + ": " + item.BrandName + "| " + item.OriginOfBrand + " " + item.BornOfBrand + " " + item.IsProducingFullyElectricCars + " " + item.HasFormula1Team + " " + item.ConcernId);
+                    }
+                    break;
+                case "Owner":
+                    List<Owner> owners = rest.Get<Owner>("owner");
+                    foreach (var item in owners)
+                    {
+                        Console.WriteLine(item.OwnerId + ": " + item.Name + "| " + item.BirthDate + " " + item.BirthPlace);
+                    }
+                    break;
+                case "Concern":
+                    List<Concern> concerns = rest.Get<Concern>("concern");
+                    foreach (var item in concerns)
+                    {
+                        Console.WriteLine(item.ConcernId + ": " + item.ConcernName + "| " + item.BornOfConcern + " " + item.CountryOfConcern + " " + item.PositionInRanking);
+                    }
+                    break;
+                default:
 
+                    break;
             }
-            Console.ReadLine();
+           
         }
 
         static void Main(string[] args)
