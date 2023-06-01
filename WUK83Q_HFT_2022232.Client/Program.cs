@@ -15,49 +15,51 @@ namespace WUK83Q_HFT_2022232.Client
         static RestService rest;
 
 
+
+
+        //public Auto(string brand, string type, int vintage, int ownerId, int autoId, int brandId)
+        //{
+        //    AutoId = autoId;
+        //    Brand = brand;
+        //    Type = type;
+        //    OwnerId = ownerId;
+        //    Vintage = vintage;
+        //    BrandId = brandId;
+
+
+        //public Brand(int brandId, string brandName, string originOfBrand, int bornOfBrand, bool isProducingFullyElectricCars, bool hasFormula1Team, int concernId)
+        //{
+        //    BrandId = brandId;
+        //    BrandName = brandName;
+        //    OriginOfBrand = originOfBrand;
+        //    BornOfBrand = bornOfBrand;
+        //    IsProducingFullyElectricCars = isProducingFullyElectricCars;
+        //    HasFormula1Team = hasFormula1Team;
+        //    ConcernId = concernId;
+        //}
+
+        //public Concern(int concernId, string concernName, int bornOfConcern, string countryOfTheConcern, int positionInRanking)
+        //{
+        //    ConcernId = concernId;
+        //    ConcernName = concernName;
+        //    BornOfConcern = bornOfConcern;
+        //    CountryOfConcern = countryOfTheConcern;
+        //    PositionInRanking = positionInRanking;
+        //}
+
+        //public Owner(string name, string birthDate, string birthPlace, int ownerId)
+        //{
+        //    Name = name;
+        //    BirthDate = birthDate;
+        //    BirthPlace = birthPlace;
+        //    //Address = address;
+        //    OwnerId = ownerId;
+        //}
+        //}
+
         static void Create(string entity)
         {
 
-
-            //public Auto(string brand, string type, int vintage, int ownerId, int autoId, int brandId)
-            //{
-            //    AutoId = autoId;
-            //    Brand = brand;
-            //    Type = type;
-            //    OwnerId = ownerId;
-            //    Vintage = vintage;
-            //    BrandId = brandId;
-
-
-            //public Brand(int brandId, string brandName, string originOfBrand, int bornOfBrand, bool isProducingFullyElectricCars, bool hasFormula1Team, int concernId)
-            //{
-            //    BrandId = brandId;
-            //    BrandName = brandName;
-            //    OriginOfBrand = originOfBrand;
-            //    BornOfBrand = bornOfBrand;
-            //    IsProducingFullyElectricCars = isProducingFullyElectricCars;
-            //    HasFormula1Team = hasFormula1Team;
-            //    ConcernId = concernId;
-            //}
-
-            //public Concern(int concernId, string concernName, int bornOfConcern, string countryOfTheConcern, int positionInRanking)
-            //{
-            //    ConcernId = concernId;
-            //    ConcernName = concernName;
-            //    BornOfConcern = bornOfConcern;
-            //    CountryOfConcern = countryOfTheConcern;
-            //    PositionInRanking = positionInRanking;
-            //}
-
-            //public Owner(string name, string birthDate, string birthPlace, int ownerId)
-            //{
-            //    Name = name;
-            //    BirthDate = birthDate;
-            //    BirthPlace = birthPlace;
-            //    //Address = address;
-            //    OwnerId = ownerId;
-            //}
-            //}
             switch (entity) 
             {
                 case "Auto":
@@ -152,6 +154,60 @@ namespace WUK83Q_HFT_2022232.Client
                     Console.WriteLine("Invalid entity");
                     break;
             }
+        }
+
+        static void Read(string entity)
+        {
+            switch (entity)
+            {
+                case "Auto":
+                    List<Auto> autos = rest.Get<Auto>("Auto");
+                    Console.WriteLine();
+                    Console.WriteLine("===============================================");
+                    foreach (var item in autos)
+                    {
+                        Console.Write($"{item.Brand}\t{item.Type}\n\t{item.Vintage}\t{item.OwnerId}\t{item.AutoId}\t{item.BrandId}");
+                        if (item._Owner == null)
+                        {
+                            Console.Write("Owner has been deleted\n=================================================\n");
+                        }
+                        else { Console.Write($"{item._Owner.Name}\n=================================================\n"); }
+                    }
+
+                    break;
+                case "Brand":
+                    List<Brand> brands = rest.Get<Brand>("Brand");
+                    Console.WriteLine();
+                    Console.WriteLine("===============================================");
+                    foreach (var item in brands) 
+                    {
+                        Console.WriteLine($"{item.BrandId}\t{item.BrandName}\n\t{item.OriginOfBrand}\t{item.BornOfBrand}\t{item.IsProducingFullyElectricCars}\t{item.HasFormula1Team}\t{item.ConcernId}");
+                    }
+                    break;
+                case "Owner":
+                    List<Owner> owners = rest.Get<Owner>("Owner");
+                    Console.WriteLine();
+                    Console.WriteLine("===============================================");
+                    foreach(var item in owners)
+                    {
+                        Console.WriteLine($"{item.Name}\n\t{item.BirthDate}\t{item.BirthPlace}\t{item.OwnerId}");
+                    }
+
+                    break;
+                case "Concern":
+                    List<Concern> concerns = rest.Get<Concern>("Concern");
+                    Console.WriteLine();
+                    Console.WriteLine("===============================================");
+                    foreach (var item in concerns)
+                    {
+                        Console.WriteLine($"{item.ConcernId}\t{item.ConcernName}\n\t{item.BornOfConcern}\t{item.CountryOfConcern}\t{item.PositionInRanking}");
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+            Console.ReadLine();
         }
         static void List(string entity)
         {
@@ -251,14 +307,6 @@ namespace WUK83Q_HFT_2022232.Client
                 case "Concern":
                     try
                     {
-                        //public Concern(int concernId, string concernName, int bornOfConcern, string countryOfTheConcern, int positionInRanking)
-                        //{
-                        //    ConcernId = concernId;
-                        //    ConcernName = concernName;
-                        //    BornOfConcern = bornOfConcern;
-                        //    CountryOfConcern = countryOfTheConcern;
-                        //    PositionInRanking = positionInRanking;
-                        //}
                         Concern concernUpdate = rest.Get<Concern>(updateid, "Concern/");
                         Console.Write($"Enter new concern ID: [old: {concernUpdate.ConcernId}]: ");
                         int newConcernID = int.Parse(Console.ReadLine());
@@ -282,19 +330,6 @@ namespace WUK83Q_HFT_2022232.Client
                 default:
                     Console.WriteLine("Invalid entity");
                     break;
-            }
-
-            if (entity == "Auto") 
-            {
-                
-                Auto one = rest.Get<Auto>(id, "auto");
-                Console.Write($"New car [old: {one.Brand + " " + one.Type}]: ");
-                string newcar = Console.ReadLine();
-                string newbrand = newcar.Split(" ")[0];
-                string newtype = newcar.Split(" ")[1];
-                one.Brand = newbrand;
-                one.Type = newtype;
-                rest.Put(one, "auto");
             }
             
         }
