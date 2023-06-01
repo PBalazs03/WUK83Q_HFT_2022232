@@ -209,19 +209,7 @@ namespace WUK83Q_HFT_2022232.Client
             }
             Console.ReadLine();
         }
-        static void List(string entity)
-        {
-            if (entity == "Auto")
-            {
-                List<Auto> cars = rest.Get<Auto>("auto");
-                foreach (var item in cars)
-                {
-                    Console.WriteLine(item.AutoId + ": " + item.Brand + " " + item.Type);
-                }
-
-            }
-            Console.ReadLine();
-        }
+    
         static void Update(string entity)
         {
             Console.Write($"Enter {entity}'s Id to update: ");
@@ -335,12 +323,40 @@ namespace WUK83Q_HFT_2022232.Client
         }
         static void Delete(string entity)
         {
+            Console.WriteLine($"Enter {entity} ID to Delete: ");
+            int deleteId = int.Parse(Console.ReadLine());
+            switch (entity)
+            {
+                case "Auto":
+                    rest.Delete(deleteId, "auto");
+                    break;
+                case "Brand":
+                    rest.Delete(deleteId, "brand");
+                    break;
+                case "Owner":
+                    rest.Delete(deleteId, "owner");
+                    break;
+                case "Concern":
+                    rest.Delete(deleteId, "concern");
+                    break;
+                default:
+                    Console.WriteLine("Invalid entity");
+                    break;
+            }
+        }
+
+        static void List(string entity)
+        {
             if (entity == "Auto")
             {
-                Console.Write("Enter the Auto's Id to delete: ");
-                int id = int.Parse(Console.ReadLine());
-                rest.Delete(id, "auto");
+                List<Auto> cars = rest.Get<Auto>("auto");
+                foreach (var item in cars)
+                {
+                    Console.WriteLine(item.AutoId + ": " + item.Brand + " " + item.Type);
+                }
+
             }
+            Console.ReadLine();
         }
 
         static void Main(string[] args)
