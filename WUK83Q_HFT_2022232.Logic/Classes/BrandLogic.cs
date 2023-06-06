@@ -16,6 +16,7 @@ namespace WUK83Q_HFT_2022232.Logic
             this.repo = repo;
         }
 
+        #region CRUD methods
         public void Create(Brand item)
         {
             this.repo.Create(item);
@@ -41,7 +42,37 @@ namespace WUK83Q_HFT_2022232.Logic
         {
             this.repo.Update(item);
         }
+        #endregion
 
-        
+        #region NON-CRUD methods
+        public string BrandWithTheMostCars()   // Most popular brand
+        {
+            var helper = repo.ReadAll().GroupBy(x => x.BrandName).Select(c => new
+            {
+                Name = c.Key,
+                Autos = c.Count()
+            }).OrderByDescending(x => x.Name).FirstOrDefault();
+            return helper.Name;
+        }
+        public string ModelsOfBrand(string brandName)
+        {
+            string output = "";
+            var selected = repo.ReadAll().Where(c => c.BrandName == brandName).SelectMany(x => x.Autos).Select(x => x.Type);
+            foreach ( var item in selected)
+            {
+                output += item + ", ";
+            }
+            if (output.Length <= 1)
+            {
+                return "There was an error: Invalid output.";
+            }
+            else
+            {
+                return output.Remove(output.Length - 2);
+            }
+        }
+
+        #endregion
+
     }
 }
