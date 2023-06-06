@@ -14,6 +14,7 @@ namespace WUK83Q_HFT_2022232.Logic
             this.repo = repo;
         }
 
+        #region CRUD methods
         public void Create(Auto item)
         {
             if (item.Brand == null)
@@ -47,7 +48,10 @@ namespace WUK83Q_HFT_2022232.Logic
         {
             this.repo.Update(item);
         }
+        #endregion
+
         #region NON-CRUD methods
+
         public double? AverageVintage()
         {
             return this.repo.ReadAll().Average(car => car.Vintage);

@@ -41,5 +41,10 @@ namespace WUK83Q_HFT_2022232.Logic
         {
             this.repo.Update(item);
         }
+
+        public int CountAutosByOwner(int ownerID)
+        {
+            return repo.Read(ownerID).Autos.Count();
+        }
     }
 }

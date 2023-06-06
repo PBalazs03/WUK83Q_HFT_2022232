@@ -15,7 +15,7 @@ namespace WUK83Q_HFT_2022232.Logic
         {
             this.repo = repo;
         }
-
+        #region CRUD methods
         public void Create(Concern item)
         {
             this.repo.Create(item);
@@ -42,5 +42,18 @@ namespace WUK83Q_HFT_2022232.Logic
             this.repo.Update
                 (item);
         }
+        #endregion
+
+        #region NON-CRUD methods
+        public void ConcernWithTheMostBrands()
+        {
+
+        }
+
+        public void ListOfConcerns()
+        {
+
+        }
+        #endregion
     }
 }
