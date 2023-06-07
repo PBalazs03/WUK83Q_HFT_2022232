@@ -56,6 +56,12 @@ namespace WUK83Q_HFT_2022232.Logic
         {
             return this.repo.ReadAll().Average(car => car.Vintage);
         }
+
+        public void CarOwnedByOwner(int id)
+        {
+            repo.ReadAll().Where(x => x.OwnerId == id).ToList();
+
+        }
         public Auto YoungestOrOldestCar(char YoungOrOld)
         {
             if (YoungOrOld == 'y')

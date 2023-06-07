@@ -72,6 +72,12 @@ namespace WUK83Q_HFT_2022232.Logic
             }
         }
 
+        public List<Brand> GetBrandByName(string concernName)
+        {
+            return repo.ReadAll().Where(b => b._Concern.ConcernName == concernName).ToList();
+        }
+
+
         #endregion
 
     }
