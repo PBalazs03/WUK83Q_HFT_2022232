@@ -47,10 +47,10 @@ namespace WUK83Q_HFT_2022232.Logic
         #region NON-CRUD methods
         public string BrandWithTheMostCars()
         {
-            var helper = repo.ReadAll().GroupBy(x => x.BrandName).Select(c => new
+            var helper = repo.ReadAll().Select(c => new
             {
-                Name = c.Key,
-                Autos = c.Count()
+                Name = c.BrandName,
+                Autos = c.Autos.Count()
             }).OrderByDescending(x => x.Name).FirstOrDefault();
             return helper.Name;
         }
