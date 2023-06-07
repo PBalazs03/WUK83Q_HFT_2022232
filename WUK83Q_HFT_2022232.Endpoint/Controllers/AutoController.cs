@@ -47,5 +47,23 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
         {
             this.logic.Delete(id);
         }
+
+        [HttpGet("average")]
+        public double? AverageVintage()
+        {
+            return this.logic.AverageVintage();
+        }
+
+        [HttpGet("{id}")]
+        public void CarOwnedByOwner(int id)
+        {
+            this.logic.CarOwnedByOwner(id);
+        }
+
+        [HttpGet("YoungOrOld")]
+        public Auto YoungestOrOldestCar(char YoungOrOld)
+        {
+            return this.logic.YoungestOrOldestCar(YoungOrOld);
+        }
     }
 }

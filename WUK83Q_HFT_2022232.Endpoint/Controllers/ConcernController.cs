@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using WUK83Q_HFT_2022232.Logic;
 using WUK83Q_HFT_2022232.Models;
@@ -47,6 +48,22 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
         public void Delete(int id)
         {
             this.logic.Delete(id);
+        }
+
+        [HttpGet("mostbrandconcern")]
+        public void ConcernWithTheMostBrands()
+        {
+            this.logic.ConcernWithTheMostBrands();
+        }
+        [HttpGet("countrysconcern")]
+        public List<Concern> ConcernOfOneExactCountry(string countryName)
+        {
+            return this.logic.ConcernOfOneExactCountry(countryName);
+        }
+        [HttpGet("concernlist")]
+        public void ListOfConcerns()
+        {
+            this.logic.ListOfConcerns();
         }
     }
 }
