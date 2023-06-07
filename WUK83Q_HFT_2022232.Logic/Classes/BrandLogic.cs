@@ -45,7 +45,7 @@ namespace WUK83Q_HFT_2022232.Logic
         #endregion
 
         #region NON-CRUD methods
-        public string BrandWithTheMostCars()   // Most popular brand
+        public string BrandWithTheMostCars()
         {
             var helper = repo.ReadAll().GroupBy(x => x.BrandName).Select(c => new
             {

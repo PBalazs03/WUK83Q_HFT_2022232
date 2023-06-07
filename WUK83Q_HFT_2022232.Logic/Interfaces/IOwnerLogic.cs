@@ -14,6 +14,7 @@ namespace WUK83Q_HFT_2022232.Logic
         Owner Read(int id);
         IQueryable<Owner> ReadAll();
         void Update(Owner item);
-
+        public int CountAutosByOwner(int ownerID);
+        public void OwnerWithTheMostCars();
     }
 }

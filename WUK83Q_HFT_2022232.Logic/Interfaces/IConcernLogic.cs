@@ -14,6 +14,8 @@ namespace WUK83Q_HFT_2022232.Logic
         Concern Read(int id);
         IQueryable<Concern> ReadAll();
         void Update(Concern item);
-
+        public void ConcernWithTheMostBrands();
+        public List<Concern> ConcernOfOneExactCountry(string countyName);
+        public void ListOfConcerns();
     }
 }

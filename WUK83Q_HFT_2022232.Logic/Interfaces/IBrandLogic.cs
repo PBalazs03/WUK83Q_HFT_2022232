@@ -14,6 +14,8 @@ namespace WUK83Q_HFT_2022232.Logic
         Brand Read(int id);
         IQueryable<Brand> ReadAll();
         void Update(Brand item);
-
+        public string BrandWithTheMostCars();
+        public string ModelsOfBrand(string brandName);
+        public List<Brand> GetBrandByName(string concernName);
     }
 }
