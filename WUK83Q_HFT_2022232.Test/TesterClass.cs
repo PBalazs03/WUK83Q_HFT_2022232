@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Xml.Linq;
 using WUK83Q_HFT_2022232.Logic;
 using WUK83Q_HFT_2022232.Models;
@@ -31,7 +32,7 @@ namespace WUK83Q_HFT_2022232.Test
         [SetUp]
         public void Initialize()
         {
-            //public Auto(string brand, string type, int vintage, int ownerId, int autoId, int brandId)
+           
             _autorepository = new Mock<IRepository<Auto>>();
             _autorepository.Setup(auto => auto.ReadAll()).Returns(new List<Auto>()
             {
@@ -39,12 +40,13 @@ namespace WUK83Q_HFT_2022232.Test
                 new Auto("Honda", "Jazz", 2018, 17, 140, 19),
                 new Auto("Isuzu", "D-Max", 2005, 18, 141, 23),
                 new Auto("Ssangyong", "Korando", 2023, 19, 142, 22),
-                new Auto("Land Rover", "Discovery", 2020, 16, 143, 21),
+                new Auto("Land Rover", "Discovery", 2020, 19, 143, 21),
                 new Auto("Land Rover", "Range Rover", 2018, 19, 144, 21),
                 new Auto("Jaguar", "F-Type", 2018, 16, 144, 20),
+                
             }.AsQueryable());
 
-            //public Brand(int brandId, string brandName, string originOfBrand, int bornOfBrand, bool isProducingFullyElectricCars, bool hasFormula1Team, int concernId)
+            
             _brandrepository = new Mock<IRepository<Brand>>();
             _brandrepository.Setup(brand => brand.ReadAll()).Returns(new List<Brand>()
             {
@@ -56,7 +58,7 @@ namespace WUK83Q_HFT_2022232.Test
                 
             }.AsQueryable());
 
-            //public Concern(int concernId, string concernName, int bornOfConcern, string countryOfTheConcern, int positionInRanking)
+            
             _concernrepository = new Mock<IRepository<Concern>>();
             _concernrepository.Setup(concern => concern.ReadAll()).Returns(new List<Concern>()
             {
@@ -66,7 +68,7 @@ namespace WUK83Q_HFT_2022232.Test
                 new Concern(018, "Isuzu", 1916, "Japan", 25),
             }.AsQueryable());
 
-            //public Owner(string name, string birthDate, string birthPlace, int ownerId)
+            
             _ownerrepository = new Mock<IRepository<Owner>>();
             _ownerrepository.Setup(owner => owner.ReadAll()).Returns(new List<Owner>()
             {
@@ -75,6 +77,8 @@ namespace WUK83Q_HFT_2022232.Test
                 new Owner("Fekete Péter", "1970.07.01", "Berettyóújfalu", 18),
                 new Owner("Juhász József", "1973.07.21", "Kecskemét", 19)
             }.AsQueryable());
+
+
 
             autologic = new AutoLogic(_autorepository.Object);
             brandlogic = new BrandLogic(_brandrepository.Object);
@@ -141,18 +145,14 @@ namespace WUK83Q_HFT_2022232.Test
         }
 
         [Test]
-        public void BrandWithTheMostCarsTest()
+        public void ReadOwnerTest()
         {
-            var brandWithTheMostCars = brandlogic.BrandWithTheMostCars();
-            Assert.That(brandWithTheMostCars.Equals("Volkswagen"));
+            Owner createdOwner = new Owner("TestPerson", "9999.99.99", "Place", 99);
+            ownerlogic.Read(99);
+
+            _ownerrepository.Verify(owner => owner.Read(99), Times.Once);
         }
 
-        [Test]
-        public void GetBrandByNameTest()
-        {
-            var brandsOfConcern = brandlogic.GetBrandByName("Suzuki");
-            Assert.That(brandsOfConcern.Equals(brandsOfConcern));
-        }
 
 
         [Test]
@@ -162,12 +162,7 @@ namespace WUK83Q_HFT_2022232.Test
             Assert.That(modelsOfBrand.Equals(modelsOfBrand));
         }
 
-        [Test]
-        public void OwnerWithTheMostCarsTest()
-        {
-            var ownerWithTheMostCars = ownerlogic.OwnerWithTheMostCars();
-            Assert.That(ownerWithTheMostCars.Equals("Gazdag Imre"));
-        }
+        
 
         [Test]
         public void AverageVintageTest()

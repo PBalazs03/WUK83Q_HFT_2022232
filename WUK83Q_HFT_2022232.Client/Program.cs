@@ -344,14 +344,14 @@ namespace WUK83Q_HFT_2022232.Client
 
 
         #region From AutoLogic
-        static void AverageVintage()  // jó
+        static void AverageVintage() 
         {
             var avg = rest.GetSingle<double?>("Auto/average");
             Console.WriteLine($"The average vintage of cars is {avg}");
             Console.ReadLine();
         }
 
-        static void CarOwnedByOwner()   // jó
+        static void CarOwnedByOwner() 
         {
             Console.WriteLine("Enter the owner's id to show it's cars:  ");
             int id = 0;
@@ -370,7 +370,7 @@ namespace WUK83Q_HFT_2022232.Client
             Console.WriteLine($"The owner of the car is: {ownerName}");
             Console.ReadLine();
         }
-        static void YoungestOrOldestCar()   // jó
+        static void YoungestOrOldestCar()  
         {
             Console.WriteLine("Would you like to see the oldest or the youngest car from the database?\n(y/o)");
             char c = char.Parse(Console.ReadLine());
@@ -391,13 +391,13 @@ namespace WUK83Q_HFT_2022232.Client
         #endregion
 
         #region From BrandLogic
-        static void BrandWithTheMostCars()   // jó
+        static void BrandWithTheMostCars()  
         {
             var brandwtmc = rest.GetSingle<string>("Brand/brandwiththemostcars");
             Console.WriteLine(brandwtmc);
             Console.ReadLine();
         }
-        static void ModelsOfBrand()  // jó
+        static void ModelsOfBrand() 
         {
             Console.WriteLine("Enter the brand's name to get it's cars: ");
             string brandName = "";
@@ -415,7 +415,7 @@ namespace WUK83Q_HFT_2022232.Client
             Console.ReadLine();
         }
 
-        static void GetBrandByName()  // jó
+        static void GetBrandByName() 
         {
             Console.WriteLine("Enter the concern's name to get it's brands: ");
             string name = "";
@@ -439,7 +439,7 @@ namespace WUK83Q_HFT_2022232.Client
 
         #region From OwnerLogic
 
-        static void OwnerWithTheMostCars()  // jó
+        static void OwnerWithTheMostCars() 
         {
             var owtmc = rest.GetSingle<string>("Owner/ownerwiththemostcars");
             Console.WriteLine($"The person, who has the most cars is: {owtmc}");
@@ -448,13 +448,13 @@ namespace WUK83Q_HFT_2022232.Client
         #endregion
 
         #region From ConcernLogic
-        static void ConcernWithTheMostBrands()    // jó
+        static void ConcernWithTheMostBrands()  
         {
             var cwtmb = rest.GetSingle<string>("Concern/mostbrandconcern");
             Console.WriteLine($"The concern who has the most brands is: {cwtmb}");
             Console.ReadLine();
         }
-        static void ConcernOfOneExactCountry()
+        static void ConcernOfOneExactCountry()  
         {
             Console.WriteLine("Enter the country's name: ");
             string countryname = "";

@@ -16,8 +16,4 @@
     <ProjectReference Include="..\WUK83Q_HFT_2022232.Models\WUK83Q_HFT_2022232.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Database\" />
-  </ItemGroup>
-
 </Project>
