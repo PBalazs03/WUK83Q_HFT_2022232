@@ -62,7 +62,7 @@ namespace WUK83Q_HFT_2022232.Logic
             return repo.ReadAll().Where(x => x.CountryOfConcern == countyName).ToList();
         }
 
-        public string ListOfConcerns()   // string
+        public string ListOfConcerns() 
         {
             var list = repo.ReadAll().Select(x => new
             {
@@ -78,11 +78,11 @@ namespace WUK83Q_HFT_2022232.Logic
             {
                 if (item.Name == null || item.Id == 0)
                 {
-                    
+                    throw new Exception(output);
                 }
                 else
                 {
-                    //Console.WriteLine(item.Name + " " + item.Id + " " + item.Country + " " + item.Born + " " + item.Position);
+                    
                     output += $"{item.Name}, {item.Id}, {item.Country}, {item.Born}, {item.Position}|";
                     
                 }

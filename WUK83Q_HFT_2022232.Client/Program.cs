@@ -477,7 +477,7 @@ namespace WUK83Q_HFT_2022232.Client
 
         static void ListOfConcerns()
         {
-            var list = rest.Get<Concern>("Concern/concernlist");
+            var list = rest.GetSingle<string>("Concern/concernlist");
             Console.WriteLine(list);
             Console.ReadLine();
         }
@@ -514,6 +514,7 @@ namespace WUK83Q_HFT_2022232.Client
                 .Add("Update", () => Update("Concern"))
                 .Add("ConcernWithTheMostBrands", () => ConcernWithTheMostBrands())
                 .Add("ConcernOfOneExactCountry", () => ConcernOfOneExactCountry())
+                .Add("ListOfConcerns", () => ListOfConcerns())
                 .Add("Exit", ConsoleMenu.Close);
 
             var ownerSubMenu = new ConsoleMenu(args, level: 1)
@@ -522,7 +523,6 @@ namespace WUK83Q_HFT_2022232.Client
                 .Add("Delete", () => Delete("Owner"))
                 .Add("Update", () => Update("Owner"))
                 .Add("OwnerWithTheMostCars", () => OwnerWithTheMostCars())      
-                .Add("ListOfConcerns", () => ListOfConcerns())
                 .Add("Exit", ConsoleMenu.Close);
 
 

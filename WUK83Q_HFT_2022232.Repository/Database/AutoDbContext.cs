@@ -44,7 +44,7 @@ namespace WUK83Q_HFT_2022232.Repository
                 .OnDelete(DeleteBehavior.Cascade);
 
 
-            ////////   DbSeed   ////////
+            
             modelBuilder.Entity<Owner>().HasData(new Owner[]
             {
                 new Owner("Kiss Pál", "1968.06.07.", "Budapest", 1),
