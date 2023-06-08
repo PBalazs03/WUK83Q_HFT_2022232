@@ -47,21 +47,22 @@ namespace WUK83Q_HFT_2022232.Logic
         #endregion
 
         #region NON-CRUD methods
-        public void ConcernWithTheMostBrands()
+        public string ConcernWithTheMostBrands()  
         {
-            var helper = repo.ReadAll().GroupBy(x => x.Brands).Select(x => new
+            var helper = repo.ReadAll().GroupBy(x => x.ConcernName).Select(x => new
             {
                 ConcernName = x.Key,
                 BrandsCount = x.Count()
             }).OrderByDescending(x => x.BrandsCount).FirstOrDefault();
-            
+
+            return helper.ConcernName;
         }
         public List<Concern> ConcernOfOneExactCountry(string countyName)
         {
             return repo.ReadAll().Where(x => x.CountryOfConcern == countyName).ToList();
         }
 
-        public void ListOfConcerns()
+        public string ListOfConcerns()   // string
         {
             var list = repo.ReadAll().Select(x => new
             {
@@ -71,18 +72,25 @@ namespace WUK83Q_HFT_2022232.Logic
                 Country = x.CountryOfConcern,
                 Position = x.PositionInRanking
             }).ToList().OrderBy(x => x.Id);
+            string output = "";
+
             foreach (var item in list) 
             {
                 if (item.Name == null || item.Id == 0)
                 {
-                    Console.WriteLine("Error: data was null");
+                    
                 }
                 else
                 {
-                    Console.WriteLine(item.Name + " " + item.Id + " " + item.Country + " " + item.Born + " " + item.Position);
+                    //Console.WriteLine(item.Name + " " + item.Id + " " + item.Country + " " + item.Born + " " + item.Position);
+                    output += $"{item.Name}, {item.Id}, {item.Country}, {item.Born}, {item.Position}|";
+                    
                 }
             }
+            return output;
         }
+
+        
         #endregion
     }
 }

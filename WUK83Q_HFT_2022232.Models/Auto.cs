@@ -51,5 +51,10 @@ namespace WUK83Q_HFT_2022232.Models
             OwnerId = ownerId;
             Vintage = vintage;
         }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
     }
 }

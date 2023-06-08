@@ -57,10 +57,16 @@ namespace WUK83Q_HFT_2022232.Logic
             return this.repo.ReadAll().Average(car => car.Vintage);
         }
 
-        public void CarOwnedByOwner(int id)
+        public string CarOwnedByOwner(int id)
         {
-            repo.ReadAll().Where(x => x.OwnerId == id).ToList();
-
+            
+            var result =  repo.ReadAll().Where(x => x.OwnerId == id).Select(x => x.Type).ToList();
+            string output = "";
+            foreach (var item in result) 
+            {
+                output += $" {item}";
+            }
+            return output;
         }
         public Auto YoungestOrOldestCar(char YoungOrOld)
         {

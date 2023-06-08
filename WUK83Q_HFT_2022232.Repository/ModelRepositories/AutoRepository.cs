@@ -22,15 +22,25 @@ namespace WUK83Q_HFT_2022232.Repository
         public override void Update(Auto item)
         {
             var old = Read(item.AutoId);
-            foreach (var prop in old.GetType().GetProperties())
+            
+            if (old == null)
             {
-                if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
-                {
-                    prop.SetValue(old, prop.GetValue(item));
-                }
                 
             }
-            ctx.SaveChanges();
+            else
+            {
+                foreach (var prop in old.GetType().GetProperties())
+                {
+                    if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                    {
+                        prop.SetValue(old, prop.GetValue(item));
+                    }
+
+                }
+                ctx.SaveChanges();
+            }
+                    
+           
         }
     }
 }

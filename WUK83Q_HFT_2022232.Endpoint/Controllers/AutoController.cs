@@ -36,7 +36,7 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
             this.logic.Create(value);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public void Update([FromBody] Auto value)
         {
             this.logic.Update(value);
@@ -54,13 +54,13 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
             return this.logic.AverageVintage();
         }
 
-        [HttpGet("{id}")]
-        public void CarOwnedByOwner(int id)
+        [HttpGet("carownedbyowner")]
+        public string CarOwnedByOwner(int id)
         {
-            this.logic.CarOwnedByOwner(id);
+            return this.logic.CarOwnedByOwner(id);
         }
 
-        [HttpGet("YoungOrOld")]
+        [HttpGet("youngorold")]
         public Auto YoungestOrOldestCar(char YoungOrOld)
         {
             return this.logic.YoungestOrOldestCar(YoungOrOld);

@@ -51,9 +51,9 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
         }
 
         [HttpGet("mostbrandconcern")]
-        public void ConcernWithTheMostBrands()
+        public string ConcernWithTheMostBrands()
         {
-            this.logic.ConcernWithTheMostBrands();
+            return this.logic.ConcernWithTheMostBrands();
         }
         [HttpGet("countrysconcern")]
         public List<Concern> ConcernOfOneExactCountry(string countryName)
@@ -61,9 +61,9 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
             return this.logic.ConcernOfOneExactCountry(countryName);
         }
         [HttpGet("concernlist")]
-        public void ListOfConcerns()
+        public string ListOfConcerns()
         {
-            this.logic.ListOfConcerns();
+            return this.logic.ListOfConcerns();
         }
     }
 }
