@@ -18,12 +18,10 @@ namespace WUK83Q_HFT_2022232.Repository
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if(!optionsBuilder.IsConfigured)
-            {
-                string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\autos.mdf;Integrated Security=True;MultipleActiveResultSets=True";
-                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(conn);
-            }
-            //base.OnConfiguring(optionsBuilder);
+            optionsBuilder
+                .UseInMemoryDatabase("AutoDatabase")
+                .UseLazyLoadingProxies();
+            base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

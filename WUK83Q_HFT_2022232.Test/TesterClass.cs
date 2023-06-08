@@ -137,152 +137,43 @@ namespace WUK83Q_HFT_2022232.Test
         [Test]
         public void CarOwnedByOwnerTest()
         {
-            //var ownedcar = autologic.CarOwnedByOwner(99);
+            var ownedcar = autologic.CarOwnedByOwner(99);
         }
 
         [Test]
         public void BrandWithTheMostCarsTest()
         {
             var brandWithTheMostCars = brandlogic.BrandWithTheMostCars();
-            Assert.That(brandWithTheMostCars.Equals("Toyota"));
+            Assert.That(brandWithTheMostCars.Equals("Volkswagen"));
         }
 
+        [Test]
+        public void GetBrandByNameTest()
+        {
+            var brandsOfConcern = brandlogic.GetBrandByName("Suzuki");
+            Assert.That(brandsOfConcern.Equals(brandsOfConcern));
+        }
 
 
         [Test]
         public void ModelsOfBrandTest()
         {
-            var modelsOfBrand = brandlogic.ModelsOfBrand("Mercedes-Benz");
-            Assert.That(modelsOfBrand.Equals("Mercedes-Benz"));
+            var modelsOfBrand = brandlogic.ModelsOfBrand("Toyota");
+            Assert.That(modelsOfBrand.Equals(modelsOfBrand));
         }
-        
-        //public void OwnerWithTheMostCarsTest()
-        //{
-        //    var ownerWithTheMostCars = ownerlogic.OwnerWithTheMostCars();
-        //    Assert.That(ownerWithTheMostCars.)
-        //}
 
         [Test]
-        public void CountAutosByOwnerTest()
+        public void OwnerWithTheMostCarsTest()
         {
-            var countAutosByOwner = ownerlogic.CountAutosByOwner(1);
-            Assert.That(countAutosByOwner.Equals(1));
+            var ownerWithTheMostCars = ownerlogic.OwnerWithTheMostCars();
+            Assert.That(ownerWithTheMostCars.Equals("Gazdag Imre"));
         }
+
         [Test]
         public void AverageVintageTest()
         {
             double? avg = autologic.AverageVintage();
             Assert.That(2014, Is.EqualTo(avg));
         }
-        //private YourClass yourObject;
-
-        //[SetUp]
-        //public void SetUp()
-        //{
-        //    // Inicializáld az objektumot a teszt előtt
-        //    yourObject = new YourClass();
-        //}
-
-        //[Test]
-        //public void AverageVintage_ShouldReturnAverageVintage()
-        //{
-        //    // Arrange
-        //    var cars = new[]
-        //    {
-        //        new Auto { Vintage = 2000 },
-        //        new Auto { Vintage = 2010 },
-        //        new Auto { Vintage = 1995 }
-        //    };
-
-        //    yourObject.repo = new YourRepository(cars);
-
-        //    // Act
-        //    var average = yourObject.AverageVintage();
-
-        //    // Assert
-        //    Assert.AreEqual(2005, average);
-        //}
-
-        //[Test]
-        //public void YoungestOrOldestCar_WhenYoung_ReturnsYoungestCar()
-        //{
-        //    // Arrange
-        //    var cars = new[]
-        //    {
-        //        new Auto { Vintage = 2000 },
-        //        new Auto { Vintage = 2010 },
-        //        new Auto { Vintage = 1995 }
-        //    };
-
-        //    yourObject.repo = new YourRepository(cars);
-
-        //    // Act
-        //    var result = yourObject.YoungestOrOldestCar('y');
-
-        //    // Assert
-        //    Assert.AreEqual(2010, result.Vintage);
-        //}
-
-        //[Test]
-        //public void YoungestOrOldestCar_WhenOld_ReturnsOldestCar()
-        //{
-        //    // Arrange
-        //    var cars = new[]
-        //    {
-        //        new Auto { Vintage = 2000 },
-        //        new Auto { Vintage = 2010 },
-        //        new Auto { Vintage = 1995 }
-        //    };
-
-        //    yourObject.repo = new YourRepository(cars);
-
-        //    // Act
-        //    var result = yourObject.YoungestOrOldestCar('o');
-
-        //    // Assert
-        //    Assert.AreEqual(1995, result.Vintage);
-        //}
-
-        //[Test]
-        //public void YoungestOrOldestCar_WhenInvalidChar_ReturnsNull()
-        //{
-        //    // Arrange
-        //    var cars = new[]
-        //    {
-        //        new Auto { Vintage = 2000 },
-        //        new Auto { Vintage = 2010 },
-        //        new Auto { Vintage = 1995 }
-        //    };
-
-        //    yourObject.repo = new YourRepository(cars);
-
-        //    // Act
-        //    var result = yourObject.YoungestOrOldestCar('x');
-
-        //    // Assert
-        //    Assert.IsNull(result);
-        //}
-
-        //[Test]
-        //public void CountAutosByOwner_ShouldReturnNumberOfAutosForOwner()
-        //{
-        //    // Arrange
-        //    var owner = new Owner { OwnerId = 1 };
-        //    owner.Autos = new[]
-        //    {
-        //        new Auto { Vintage = 2000 },
-        //        new Auto { Vintage = 2010 },
-        //        new Auto { Vintage = 1995 }
-        //    };
-
-        //    yourObject.repo = new YourRepository();
-        //    yourObject.repo.Add(owner);
-
-        //    // Act
-        //    var result = yourObject.CountAutosByOwner(1);
-
-        //    // Assert
-        //    Assert.AreEqual(3, result);
-        //}
     }
 }

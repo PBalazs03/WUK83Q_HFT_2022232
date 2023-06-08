@@ -56,7 +56,7 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
             return this.logic.ConcernWithTheMostBrands();
         }
         [HttpGet("countrysconcern")]
-        public List<Concern> ConcernOfOneExactCountry(string countryName)
+        public List<Concern> ConcernOfOneExactCountry([FromQuery] string countryName)
         {
             return this.logic.ConcernOfOneExactCountry(countryName);
         }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -9,7 +11,8 @@ namespace WUK83Q_HFT_2022232.Models
 {
     public class Concern
     {
-     
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ConcernId { get; set; }
         public string ConcernName { get; set; }
         public int BornOfConcern { get; set; }
@@ -31,6 +34,10 @@ namespace WUK83Q_HFT_2022232.Models
         public Concern()
         {
             
+        }
+        public override string ToString()
+        {
+            return $"ConcernId: {ConcernId}, ConcernName: {ConcernName}, BornOfConcern: {BornOfConcern}, CountryOfConcern: {CountryOfConcern}, PositionInRanking: {PositionInRanking}";
         }
     }
 }

@@ -54,14 +54,9 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
             return this.logic.AverageVintage();
         }
 
-        [HttpGet("carownedbyowner")]
-        public string CarOwnedByOwner(int id)
-        {
-            return this.logic.CarOwnedByOwner(id);
-        }
 
         [HttpGet("youngorold")]
-        public Auto YoungestOrOldestCar(char YoungOrOld)
+        public Auto YoungestOrOldestCar([FromQuery]char YoungOrOld)
         {
             return this.logic.YoungestOrOldestCar(YoungOrOld);
         }

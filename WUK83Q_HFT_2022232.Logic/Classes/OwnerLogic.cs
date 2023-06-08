@@ -48,13 +48,10 @@ namespace WUK83Q_HFT_2022232.Logic
 
         #region NON-CRUD methods
 
-        public int CountAutosByOwner(int ownerID)
-        {
-            return repo.Read(ownerID).Autos.Count();
-        }
+       
         
 
-        public void OwnerWithTheMostCars()
+        public string OwnerWithTheMostCars()
         {
             
             var selected = repo.ReadAll().Select(x => new
@@ -63,6 +60,8 @@ namespace WUK83Q_HFT_2022232.Logic
                 CarNumbers = x.Autos.Count()
             }).OrderByDescending(x => x.CarNumbers).FirstOrDefault();
             
+            
+            return selected.Name;
         }
         #endregion
     }

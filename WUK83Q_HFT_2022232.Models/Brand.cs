@@ -41,5 +41,10 @@ namespace WUK83Q_HFT_2022232.Models
             HasFormula1Team = hasFormula1Team;
             ConcernId = concernId;
         }
+
+        public override string ToString()
+        {
+            return $"BrandId: {BrandId}, BrandName: {BrandName}, OriginOfBrand: {OriginOfBrand}, BornOfBrand: {BornOfBrand}, IsProducingFullyElectricCars: {IsProducingFullyElectricCars}, HasFormula1Team: {HasFormula1Team}, ConcernId: {ConcernId}";
+        }
     }
 }

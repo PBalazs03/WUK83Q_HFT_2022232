@@ -14,8 +14,7 @@ namespace WUK83Q_HFT_2022232.Logic
         Auto Read(int id);
         IQueryable<Auto> ReadAll();
         void Update(Auto item);
-        public double? AverageVintage();
-        public string CarOwnedByOwner(int id);
+        public double? AverageVintage();     
         public Auto YoungestOrOldestCar(char YoungOrOld);
 
     }

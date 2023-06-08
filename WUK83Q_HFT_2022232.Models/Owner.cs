@@ -19,7 +19,7 @@ namespace WUK83Q_HFT_2022232.Models
         public string Name { get; set; }
         public string BirthDate { get; set; }
         public string BirthPlace { get; set; }
-        //public string Address { get; set; }
+       
         [JsonIgnore]
         public virtual ICollection<Auto> Autos { get; set; }
 
@@ -28,12 +28,16 @@ namespace WUK83Q_HFT_2022232.Models
             Name = name;
             BirthDate = birthDate;
             BirthPlace = birthPlace;
-            //Address = address;
+
             OwnerId = ownerId;
         }
         public Owner()
         {
             
+        }
+        public override string ToString()
+        {
+            return $"OwnerId: {OwnerId}, Name: {Name}, BirthDate: {BirthDate}, BirthPlace: {BirthPlace}";
         }
     }
 }

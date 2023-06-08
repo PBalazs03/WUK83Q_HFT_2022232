@@ -43,21 +43,16 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete([FromQuery]int id)
         {
             this.logic.Delete(id);
         }
 
-        [HttpGet("ownercarnumber")]
-        public int CountAutosByOwner(int ownerID)
-        {
-            return this.logic.CountAutosByOwner((int)ownerID);
-        }
 
         [HttpGet("ownerwiththemostcars")]
-        public void OwnerWithTheMostCars()
+        public string OwnerWithTheMostCars()
         {
-            this.logic.OwnerWithTheMostCars();
+            return this.logic.OwnerWithTheMostCars();
         }
     }
 }

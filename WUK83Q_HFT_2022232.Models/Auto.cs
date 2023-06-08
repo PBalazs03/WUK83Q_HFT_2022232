@@ -19,10 +19,10 @@ namespace WUK83Q_HFT_2022232.Models
         public int Vintage { get; set; } 
         
         [ForeignKey(nameof(Owner))]
-        public int OwnerId { get; set; }  // idegen kulcs
+        public int OwnerId { get; set; } 
 
         [ForeignKey(nameof(Brand))]
-        public int BrandId { get; set; }  // idegen kulcs
+        public int BrandId { get; set; } 
         
         public virtual Owner _Owner { get; set; }
         public virtual Brand _Brand { get; set; }
@@ -53,7 +53,7 @@ namespace WUK83Q_HFT_2022232.Models
         }
         public override string ToString()
         {
-            return base.ToString();
+            return $"AutoId: {AutoId}, Brand: {Brand}, Type: {Type}, Vintage: {Vintage}, OwnerId: {OwnerId}, BrandId: {BrandId}";
         }
 
     }

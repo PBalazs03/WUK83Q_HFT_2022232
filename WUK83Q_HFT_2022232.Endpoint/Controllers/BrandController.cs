@@ -55,13 +55,13 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
         }
 
         [HttpGet("modelsofbrand")]
-        public string ModelsOfBrand(string brandName)
+        public string ModelsOfBrand([FromQuery]string brandName)
         {
             return this.logic.ModelsOfBrand(brandName);
         }
 
         [HttpGet("brandsofconcern")]
-        public List<Brand> GetBrandByName(string concernName)
+        public List<Brand> GetBrandByName([FromQuery]string concernName)
         {
             return this.logic.GetBrandByName(concernName);
         }

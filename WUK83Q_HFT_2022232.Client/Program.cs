@@ -307,62 +307,53 @@ namespace WUK83Q_HFT_2022232.Client
                     List<Auto> cars = rest.Get<Auto>("Auto");
                     foreach (var item in cars)
                     {
-                        Console.WriteLine(item.AutoId + ": " + item.Brand + " " + item.Type + " | " + item.Vintage + " " + item.OwnerId + " " + item.AutoId + " " + item.BrandId);
+                        Console.WriteLine(item);
                     }
+                    Console.ReadKey();
                     break;
                 case "Brand":
                     List<Brand> brands = rest.Get<Brand>("Brand");
                     foreach (var item in brands)
                     {
-                        Console.WriteLine(item.BrandId + ": " + item.BrandName + "| " + item.OriginOfBrand + " " + item.BornOfBrand + " " + item.IsProducingFullyElectricCars + " " + item.HasFormula1Team + " " + item.ConcernId);
+                        Console.WriteLine(item);
                     }
+                    Console.ReadKey();
                     break;
                 case "Owner":
                     List<Owner> owners = rest.Get<Owner>("Owner");
                     foreach (var item in owners)
                     {
-                        Console.WriteLine(item.OwnerId + ": " + item.Name + "| " + item.BirthDate + " " + item.BirthPlace);
+                        Console.WriteLine(item);
                     }
+                    Console.ReadKey();
                     break;
                 case "Concern":
                     List<Concern> concerns = rest.Get<Concern>("Concern");
                     foreach (var item in concerns)
                     {
-                        Console.WriteLine(item.ConcernId + ": " + item.ConcernName + "| " + item.BornOfConcern + " " + item.CountryOfConcern + " " + item.PositionInRanking);
+                        Console.WriteLine(item);
                     }
+                    Console.ReadKey();
                     break;
                 default:
 
                     break;
             }
-           
+            Console.ReadKey();
         }
-
-        //public List<Auto> GetAutosByOwner(int ownerId)
-        //{
-        //    return rest.Get<Auto>("Auto").Where(a => a.OwnerId == ownerId).ToList();
-        //}
-        //public Auto GetOldestAuto()
-        //{
-        //    return rest.Get<Auto>("Auto").OrderBy(a => a.Vintage).FirstOrDefault();
-        //}
-        //public int CountAutosByBrand(string brand)
-        //{
-        //    return rest.Get<Auto>("Auto").Count(a => a._Brand.BrandName == brand);
-        //}
 
 
         #region From AutoLogic
-        public void AverageVintage()
+        static void AverageVintage()  // jó
         {
             var avg = rest.GetSingle<double?>("Auto/average");
             Console.WriteLine($"The average vintage of cars is {avg}");
             Console.ReadLine();
         }
 
-        public void CarOwnedByOwner()
+        static void CarOwnedByOwner()   // jó
         {
-            Console.WriteLine("Who owns this car? Enter the car's id and let's know: ");
+            Console.WriteLine("Enter the owner's id to show it's cars:  ");
             int id = 0;
             try
             {
@@ -373,36 +364,40 @@ namespace WUK83Q_HFT_2022232.Client
 
                 Console.WriteLine("There was an error: the id was null");
             }
-            string ownerName = rest.Get<string>(id, "Auto/carownedbyowner?OwnerId=");
-            Console.WriteLine(ownerName);
+
+            string endpoint = $"Auto/carownedbyowner?id={id}";
+            var ownerName = rest.GetSingle<string>(endpoint);
+            Console.WriteLine($"The owner of the car is: {ownerName}");
             Console.ReadLine();
         }
-        public void YoungestOrOldestCar()
+        static void YoungestOrOldestCar()   // jó
         {
             Console.WriteLine("Would you like to see the oldest or the youngest car from the database?\n(y/o)");
             char c = char.Parse(Console.ReadLine());
             Console.WriteLine("");
-            Auto youngorold = rest.Get<Auto>(c, "Artist/yoro");
-            if (c == 'y')
-            {
-                Console.WriteLine($"The youngest car is a(n) {youngorold.Brand} {youngorold.Type} and the age is{(int)(2023 - youngorold.Vintage)}");
-            }
-            else
-            {
-                Console.WriteLine($"The oldest car is a(n) {youngorold.Brand} {youngorold.Type} and the age is {(int)(2023 - youngorold.Vintage)}");
-            }
-            Console.ReadLine();
+            var youngorold = rest.GetSingle<Auto>($"Auto/youngorold?YoungOrOld={c}");
+            
+            
+                if (c == 'y')
+                {
+                    Console.WriteLine($"The youngest car is a(n) {youngorold.Brand} {youngorold.Type} and the age is {(int)(2023 - youngorold.Vintage)}");
+                }
+                else
+                {
+                    Console.WriteLine($"The oldest car is a(n) {youngorold.Brand} {youngorold.Type} and the age is {(int)(2023 - youngorold.Vintage)}");
+                }
+                Console.ReadLine();
         }
         #endregion
 
         #region From BrandLogic
-        public void BrandWithTheMostCars()
+        static void BrandWithTheMostCars()   // jó
         {
-            var brandwtmc = rest.Get<Brand>("Brand/brandwiththemostcars");
+            var brandwtmc = rest.GetSingle<string>("Brand/brandwiththemostcars");
             Console.WriteLine(brandwtmc);
             Console.ReadLine();
         }
-        public void ModelsOfBrand()
+        static void ModelsOfBrand()  // jó
         {
             Console.WriteLine("Enter the brand's name to get it's cars: ");
             string brandName = "";
@@ -415,12 +410,12 @@ namespace WUK83Q_HFT_2022232.Client
 
                 Console.WriteLine("The brand name cannot be null!");
             }
-            var result = rest.Get<Brand>("Brand/modelsofbrand");
+            var result = rest.GetSingle<string>($"Brand/modelsofbrand?brandName={brandName}");
             Console.WriteLine(result);
             Console.ReadLine();
         }
 
-        public void GetBrandByName()
+        static void GetBrandByName()  // jó
         {
             Console.WriteLine("Enter the concern's name to get it's brands: ");
             string name = "";
@@ -433,52 +428,54 @@ namespace WUK83Q_HFT_2022232.Client
 
                 Console.WriteLine("The name cannot be null!");
             }
-            var result = rest.Get<List<Brand>>("Brand/brandsofconcern");
-            Console.WriteLine(result);  
+            var result = rest.Get<Brand>($"Brand/brandsofconcern?concernName={name}");
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
             Console.ReadLine();
         }
         #endregion
 
         #region From OwnerLogic
-        public void CountAutosByOwner(int ownerID)
-        {
-            Console.WriteLine("Enter the person's id to show that individual's cars number: ");
-            int id = 0;
-            try
-            {
-                id = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
 
-                Console.WriteLine("There was an error: the id was null");
-            }
-            int result = rest.Get<int>(id, "Owner/ownercarnumber");
-            Console.WriteLine(result);
-            Console.ReadLine();
-        }
-
-        public void OwnerWithTheMostCars()
+        static void OwnerWithTheMostCars()  // jó
         {
-            var owtmc = rest.Get<Owner>("Owner/ownerwiththemostcars");
+            var owtmc = rest.GetSingle<string>("Owner/ownerwiththemostcars");
             Console.WriteLine($"The person, who has the most cars is: {owtmc}");
             Console.ReadLine();
         }
         #endregion
 
         #region From ConcernLogic
-        public void ConcernWithTheMostBrands()
+        static void ConcernWithTheMostBrands()    // jó
         {
-            var cwtmb = rest.Get<Concern>("Concern/mostbrandconcern");
+            var cwtmb = rest.GetSingle<string>("Concern/mostbrandconcern");
             Console.WriteLine($"The concern who has the most brands is: {cwtmb}");
             Console.ReadLine();
         }
-        //public void ConcernOfOneExactCountry(string countyName)
-        //{
+        static void ConcernOfOneExactCountry()
+        {
+            Console.WriteLine("Enter the country's name: ");
+            string countryname = "";
+            try
+            {
+                countryname = Console.ReadLine();
+            }
+            catch (ArgumentException)
+            {
 
-        //}
+                Console.WriteLine("The brand name cannot be null!");
+            }
+            var result = rest.Get<Brand>($"Concern/countrysconcern?countryName={countryname}");
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
+            Console.ReadLine();
+        }
 
-        public void ListOfConcerns()
+        static void ListOfConcerns()
         {
             var list = rest.Get<Concern>("Concern/concernlist");
             Console.WriteLine(list);
@@ -495,6 +492,9 @@ namespace WUK83Q_HFT_2022232.Client
                 .Add("Create", () => Create("Auto"))
                 .Add("Delete", () => Delete("Auto"))
                 .Add("Update", () => Update("Auto"))
+                .Add("AverageVintage", () => AverageVintage())
+                .Add("CarOwnedByOwner", () => CarOwnedByOwner())
+                .Add("YoungestOrOldestCar", () => YoungestOrOldestCar())
                 .Add("Exit", ConsoleMenu.Close);
 
             var brandSubMenu = new ConsoleMenu(args, level: 1)
@@ -502,6 +502,9 @@ namespace WUK83Q_HFT_2022232.Client
                 .Add("Create", () => Create("Brand"))
                 .Add("Delete", () => Delete("Brand"))
                 .Add("Update", () => Update("Brand"))
+                .Add("BrandWithTheMostCars", () => BrandWithTheMostCars())
+                .Add("ModelsOfBrand", () => ModelsOfBrand())
+                .Add("GetBrandByName", () => GetBrandByName())
                 .Add("Exit", ConsoleMenu.Close);
 
             var concernSubMenu = new ConsoleMenu(args, level: 1)
@@ -509,6 +512,8 @@ namespace WUK83Q_HFT_2022232.Client
                 .Add("Create", () => Create("Concern"))
                 .Add("Delete", () => Delete("Concern"))
                 .Add("Update", () => Update("Concern"))
+                .Add("ConcernWithTheMostBrands", () => ConcernWithTheMostBrands())
+                .Add("ConcernOfOneExactCountry", () => ConcernOfOneExactCountry())
                 .Add("Exit", ConsoleMenu.Close);
 
             var ownerSubMenu = new ConsoleMenu(args, level: 1)
@@ -516,6 +521,8 @@ namespace WUK83Q_HFT_2022232.Client
                 .Add("Create", () => Create("Owner"))
                 .Add("Delete", () => Delete("Owner"))
                 .Add("Update", () => Update("Owner"))
+                .Add("OwnerWithTheMostCars", () => OwnerWithTheMostCars())      
+                .Add("ListOfConcerns", () => ListOfConcerns())
                 .Add("Exit", ConsoleMenu.Close);
 
 

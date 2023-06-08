@@ -82,11 +82,11 @@ namespace WUK83Q_HFT_2022232.Logic
             }
             else
             {
-                Console.WriteLine("Enter 'o' or 'y'!");
                 return null;
             }
 
         }
+       
         #endregion
     }
 }
