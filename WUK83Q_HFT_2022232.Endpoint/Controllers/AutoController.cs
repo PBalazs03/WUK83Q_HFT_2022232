@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using WUK83Q_HFT_2022232.Endpoint.Services;
 using WUK83Q_HFT_2022232.Logic;
 using WUK83Q_HFT_2022232.Models;
 
@@ -11,10 +14,12 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
     {
 
         IAutoLogic logic;
+        IHubContext<SignalRHub> hub;
 
-        public AutoController(IAutoLogic logic)
+        public AutoController(IAutoLogic logic, IHubContext<SignalRHub> hub)
         {
             this.logic = logic;
+            this.hub = hub;
         }
 
         [HttpGet]
@@ -34,18 +39,22 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
         public void Create([FromBody] Auto value)
         {
             this.logic.Create(value);
+            this.hub.Clients.All.SendAsync("AutoCreated", value);
         }
 
         [HttpPut("{id}")]
         public void Update([FromBody] Auto value)
         {
             this.logic.Update(value);
+            this.hub.Clients.All.SendAsync("AutoUpdated", value);
         }
 
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var autoToDelete = this.logic.Read(id);
             this.logic.Delete(id);
+            this.hub.Clients.All.SendAsync("AutoDeleted", autoToDelete);
         }
 
         [HttpGet("average")]

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 using System.Text.Json.Serialization;
 
 namespace WUK83Q_HFT_2022232.Models
@@ -56,5 +57,27 @@ namespace WUK83Q_HFT_2022232.Models
             return $"AutoId: {AutoId}, Brand: {Brand}, Type: {Type}, Vintage: {Vintage}, OwnerId: {OwnerId}, BrandId: {BrandId}";
         }
 
+        public override bool Equals(object obj)
+        {
+            Auto b = obj as Auto;
+            if (b == null)
+            {
+                return false;
+            }
+            else
+            {
+                return this.AutoId == b.AutoId && this.Brand == b.Brand && this.Type == b.Type;
+            }
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.AutoId, this.Brand, this.Type);
+        }
+
+        public class AutoInfo
+        {
+            public string ABrand { get; set; }
+            public string AType { get; set; }
+        }
     }
 }

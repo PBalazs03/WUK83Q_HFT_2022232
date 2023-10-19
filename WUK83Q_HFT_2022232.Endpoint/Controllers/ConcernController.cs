@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using WUK83Q_HFT_2022232.Endpoint.Services;
 using WUK83Q_HFT_2022232.Logic;
 using WUK83Q_HFT_2022232.Models;
 
@@ -13,10 +16,12 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
     public class ConcernController : ControllerBase
     {
         IConcernLogic logic;
+        IHubContext<SignalRHub> hub;
 
-        public ConcernController(IConcernLogic logic)
+        public ConcernController(IConcernLogic logic, IHubContext<SignalRHub> hub)
         {
             this.logic = logic;
+            this.hub = hub;
         }
 
         [HttpGet]
@@ -36,18 +41,22 @@ namespace WUK83Q_HFT_2022232.Endpoint.Controllers
         public void Create([FromBody] Concern value)
         {
             this.logic.Create(value);
+            this.hub.Clients.All.SendAsync("ConcernCreated", value);
         }
 
         [HttpPut]
         public void Update([FromBody] Concern value)
         {
             this.logic.Update(value);
+            this.hub.Clients.All.SendAsync("ConcernUpdate", value);
         }
 
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var concernDelete = this.logic.Read(id);
             this.logic.Delete(id);
+            this.hub.Clients.All.SendAsync("BrandDelete", concernDelete);
         }
 
         [HttpGet("mostbrandconcern")]

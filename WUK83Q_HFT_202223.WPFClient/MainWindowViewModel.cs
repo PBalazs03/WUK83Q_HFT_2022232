@@ -181,7 +181,7 @@ namespace WUK83Q_HFT_202223.WPFClient
             {
                 // AUTO
                 #region Auto
-                //Autos = new RestCollection<Auto>();
+                Autos = new RestCollection<Auto>("http://localhost:21840/", "auto", "hub");
                 CreateAutoCommand = new RelayCommand(() =>
                 {
                     Autos.Add(new Auto()
@@ -224,7 +224,7 @@ namespace WUK83Q_HFT_202223.WPFClient
                 // BRAND
                 #region Brand
 
-                //Brands = new RestCollection<Brand>();
+                Brands = new RestCollection<Brand>("http://localhost:21840/", "brand", "hub");
                 CreateBrandCommand = new RelayCommand(() =>
                 {
                     Brands.Add(new Brand()
@@ -269,7 +269,7 @@ namespace WUK83Q_HFT_202223.WPFClient
                 // CONCERN
                 #region Concern
 
-                //Concerns = new RestCollection<Concern>();
+                Concerns = new RestCollection<Concern>("http://localhost:21840/", "concern", "hub");
                 CreateConcernCommand = new RelayCommand(() =>
                 {
                     Concerns.Add(new Concern()
@@ -309,7 +309,7 @@ namespace WUK83Q_HFT_202223.WPFClient
                 // OWNER
                 #region Owner
 
-                //Owners = new RestCollection<Owner>();
+                Owners = new RestCollection<Owner>("http://localhost:21840/", "owner", "hub");
 
                 CreateOwnerCommand = new RelayCommand(() =>
                 {
