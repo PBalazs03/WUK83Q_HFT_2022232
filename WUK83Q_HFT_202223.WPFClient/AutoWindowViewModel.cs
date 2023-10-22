@@ -66,20 +66,20 @@ namespace WUK83Q_HFT_202223.WPFClient
         }
         public AutoWindowViewModel()
         {
-            /*            rest = new RestService("http://localhost:25922/");
-            processorsCRUD1 = rest.Get<Processor>("Statistics/z790ProcessorsWith10Core");*/
+            ///*            rest = new RestService("http://localhost:25922/");
+            //processorsCRUD1 = rest.Get<Processor>("Statistics/z790ProcessorsWith10Core");*/
 
-            if (!IsInDesignMode)
-            {
-                Autos = new RestCollection<Auto>("", "auto", );
-                CreateAutoCommand = new RelayCommand(() =>
-                {
-                    Autos.Add(new Auto() 
-                    {
+            //if (!IsInDesignMode)
+            //{
+            //    Autos = new RestCollection<Auto>("", "auto", );
+            //    CreateAutoCommand = new RelayCommand(() =>
+            //    {
+            //        Autos.Add(new Auto() 
+            //        {
                         
-                    });
-                });
-            }
+            //        });
+            //    });
+            //}
         }
     }
 }

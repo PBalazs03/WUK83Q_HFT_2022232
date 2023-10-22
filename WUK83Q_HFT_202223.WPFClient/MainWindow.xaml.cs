@@ -24,5 +24,31 @@ namespace WUK83Q_HFT_202223.WPFClient
         {
             InitializeComponent();
         }
+
+        private void Button_Click_AutoData(object sender, RoutedEventArgs e)
+        {
+            AutoWindow aw = new AutoWindow();
+            aw.Show();
+        }
+
+        private void Button_Click_BrandData(object sender, RoutedEventArgs e)
+        {
+            BrandWindow bw = new BrandWindow();
+            bw.Show();
+        }
+
+        private void Button_Click_ConcernData(object sender, RoutedEventArgs e)
+        {
+            ConcernWindow cw = new ConcernWindow();
+            cw.Show();
+        }
+
+        private void Button_Click_OwnerData(object sender, RoutedEventArgs e)
+        {
+            OwnerWindow ow = new OwnerWindow();
+            ow.Show();
+        }
+
+        
     }
 }

@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WUK83Q_HFT_202223.WPFClient"
         mc:Ignorable="d"
-        Title="ConcernWindow" Height="450" Width="800">
+        Title="Concern Database" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Concerns}" SelectedItem="{Binding SelectedConcern}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding ConcernName}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1" DataContext="{Binding SelectedConcern}">
+
+            <Label Content="Concern Informations" Background="LightBlue" Padding="10"/>
+            <Label Content="{Binding ConcernId}" Padding="8"/>
+            <Label Content="{Binding ConcernName}" Padding="8"/>
+            <Label Content="{Binding BornOfConcern}" Padding="8"/>
+            <Label Content="{Binding CountryOfConcern}" Padding="8"/>
+            <Label Content="{Binding PositionInRanking}" Padding="8"/>
+            <!--<TextBox Text="{Binding Type}" Padding="10" Margin="0,0,0,30"/>-->
+            <Button Content="Create Concern" Command="{Binding CreateConcernCommand}" Margin="10" Padding="5"/>
+            <Button Content="Update Concern" Command="{Binding UpdateConcernCommand}" Margin="10" Padding="5"/>
+            <Button Content="Delete Concern" Command="{Binding DeleteConcernCommand}" Margin="10" Padding="5"/>
+        </StackPanel>
     </Grid>
 </Window>

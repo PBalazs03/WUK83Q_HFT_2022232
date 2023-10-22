@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WUK83Q_HFT_202223.WPFClient"
         mc:Ignorable="d"
-        Title="AutoWindow" Height="450" Width="800">
+        Title="Auto Database" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Autos}" SelectedItem="{Binding SelectedAuto}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding AutoId}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1" DataContext="{Binding SelectedAuto}" Background="Azure">
+
+            <Label Content="Car Informations" Background="LightBlue" Padding="10"/>
+            <Label Content="{Binding Brand}" Padding="8"/>
+            <Label Content="{Binding Type}" Padding="8"/>
+            <Label Content="{Binding Vintage}" Padding="8"/>
+            <Label Content="{Binding OwnerId}" Padding="8"/>
+            <Label Content="{Binding BrandId}" Padding="8"/>
+            <!--<TextBox Text="{Binding Type}" Padding="10" Margin="0,0,0,30"/>-->
+            <Button Content="Create Auto" Command="{Binding CreateAutoCommand}" Margin="10" Padding="5" BorderBrush="LightGray"/>
+            <Button Content="Update Auto" Command="{Binding UpdateAutoCommand}" Margin="10" Padding="5" BorderBrush="LightGray"/>
+            <Button Content="Delete Auto" Command="{Binding DeleteAutoCommand}" Margin="10" Padding="5" BorderBrush="LightGray"/>
+        </StackPanel>
     </Grid>
 </Window>
