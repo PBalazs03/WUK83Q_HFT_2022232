@@ -27,11 +27,11 @@
 
     <Grid Background="DimGray">
         <Label Content="Welcome! Please, choose a Database!" HorizontalAlignment="Left" Margin="30"  VerticalAlignment="Top" FontSize="20" FontStyle="Normal"/>
-        <Button Content="AUTO DATABASE" Click="Button_Click_AutoData" HorizontalAlignment="Left" Margin="150,130,0,0" VerticalAlignment="Top" Height="100" Width="170" BorderBrush="LightGray" Background="Orange" />
-        <Button Content="CONCERN DATABASE" Click="Button_Click_ConcernData" HorizontalAlignment="Left" Margin="150,280,0,0" VerticalAlignment="Top" Height="100" Width="170" BorderBrush="LightGray" Background="Green"/>
-        <Button Content="BRAND DATABASE" Click="Button_Click_BrandData" HorizontalAlignment="Left" Margin="480,130,0,0" VerticalAlignment="Top" Height="100" Width="170" BorderBrush="LightGray" Background="LightBlue"/>
-        <Button Content="OWNER DATABASE" Click="Button_Click_OwnerData" HorizontalAlignment="Left" Margin="480,280,0,0" VerticalAlignment="Top" Height="100" Width="170" BorderBrush="LightGray" Background="PaleVioletRed"/>
-
+        <Button Content="AUTO DATABASE" Click="Button_Click_AutoData" HorizontalAlignment="Left" Margin="150,100,0,0" VerticalAlignment="Top" Height="100" Width="170" BorderBrush="LightGray" Background="Orange" />
+        <Button Content="CONCERN DATABASE" Click="Button_Click_ConcernData" HorizontalAlignment="Left" Margin="150,230,0,0" VerticalAlignment="Top" Height="100" Width="170" BorderBrush="LightGray" Background="Green"/>
+        <Button Content="BRAND DATABASE" Click="Button_Click_BrandData" HorizontalAlignment="Left" Margin="480,100,0,0" VerticalAlignment="Top" Height="100" Width="170" BorderBrush="LightGray" Background="LightBlue"/>
+        <Button Content="OWNER DATABASE" Click="Button_Click_OwnerData" HorizontalAlignment="Left" Margin="480,230,0,0" VerticalAlignment="Top" Height="100" Width="170" BorderBrush="LightGray" Background="PaleVioletRed"/>
+        <Button Content="NON-CRUD METHODS" Click="Button_Click_NONCRUDMETHODS" HorizontalAlignment="Center" Margin="0,369,0,0" VerticalAlignment="Top" Height="65" Width="260" BorderBrush="LightGray" Background="Firebrick"/>
 
     </Grid>
 </Window>

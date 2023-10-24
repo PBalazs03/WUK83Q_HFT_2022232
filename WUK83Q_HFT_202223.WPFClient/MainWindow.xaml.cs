@@ -49,6 +49,10 @@ namespace WUK83Q_HFT_202223.WPFClient
             ow.Show();
         }
 
-        
+        private void Button_Click_NONCRUDMETHODS(object sender, RoutedEventArgs e)
+        {
+            NonCrudWindow nw = new NonCrudWindow();
+            nw.Show();
+        }
     }
 }

@@ -33,14 +33,14 @@ namespace WUK83Q_HFT_202223.WPFClient
         public List<Auto> autosCRUD { get; set; }
         //public List<Auto.Aut> processorInfosCRUD { get; set; }
         public ObservableCollection<Auto> collection { get; set; }
-        //public ObservableCollection<Auto.AutoInfo> collection2 { get; set; }
-        //public CompositeCollection compositeCollection { get; set; }
+        public ObservableCollection<Auto.AutoInfo> collection2 { get; set; }
+        public CompositeCollection compositeCollection { get; set; }
 
         public NonCrudWindow()
         {
             InitializeComponent();
             DataContext = this;
-            rest = new RestService("");
+            rest = new RestService("http://localhost:21840/");
 
 
         }

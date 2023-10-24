@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WUK83Q_HFT_202223.WPFClient"
         mc:Ignorable="d"
-        Title="NonCrudWindow" Height="450" Width="800">
+        Title="NonCrudWindow" Height="500" Width="700">
     <Window.Effect>
         <DropShadowEffect/>
     </Window.Effect>
@@ -20,19 +20,18 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding Brands}" SelectedItem="{Binding SelectedBrand}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Label Content="{Binding BrandName}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>-->
+        <StackPanel Grid.Column="1" DataContext="{Binding}">
+            <Label Content="NON-CRUD Methods" Background="LightBlue" Padding="10"/>
+            <Button Content="Create Brand" Command="{Binding CreateBrandCommand}" Margin="10" Padding="5" Width="244" HorizontalAlignment="Left"/>
+            <Button Content="Update Brand" Command="{Binding UpdateBrandCommand}" Margin="10" Padding="5" HorizontalAlignment="Left" Width="242"/>
+            <Button Content="Delete Brand" Command="{Binding DeleteBrandCommand}" Margin="10" Padding="5" HorizontalAlignment="Left" Width="241"/>
+        </StackPanel>
         
-        <StackPanel Grid.Column="1" DataContext="{Binding SelectedBrand}">
+        <!--<StackPanel Grid.Column="1" DataContext="{Binding SelectedBrand}">
 
             <Label Content="Brand Informations" Background="LightBlue" Padding="10"/>
             <Label Content="{Binding BrandId}" Padding="8"/>
@@ -42,10 +41,10 @@
             <Label Content="{Binding IsProducingFullyElectricCars}" Padding="8"/>
             <Label Content="{Binding HasFormula1Team}" Padding="8"/>
             <Label Content="{Binding ConcernId}" Padding="8"/>
-            <!--<TextBox Text="{Binding Type}" Padding="10" Margin="0,0,0,30"/>-->
+            --><!--<TextBox Text="{Binding Type}" Padding="10" Margin="0,0,0,30"/>--><!--
             <Button Content="Create Brand" Command="{Binding CreateBrandCommand}" Margin="10" Padding="5"/>
             <Button Content="Update Brand" Command="{Binding UpdateBrandCommand}" Margin="10" Padding="5"/>
             <Button Content="Delete Brand" Command="{Binding DeleteBrandCommand}" Margin="10" Padding="5"/>
-        </StackPanel>
+        </StackPanel>-->
     </Grid>
 </Window>

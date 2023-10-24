@@ -76,8 +76,31 @@ namespace WUK83Q_HFT_2022232.Models
 
         public class AutoInfo
         {
-            public string ABrand { get; set; }
-            public string AType { get; set; }
+            public int AutoId { get; set; }
+            public double? AverageVintage { get; set; } 
+            
+            public string CarOwnedByOwner { get; set; }
+
+            public string YoungestOrOldestCar { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                AutoInfo b = obj as AutoInfo;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.AutoId == b.AutoId;
+                }
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.AverageVintage, this.CarOwnedByOwner, this.YoungestOrOldestCar);
+            }
+
         }
     }
 }
