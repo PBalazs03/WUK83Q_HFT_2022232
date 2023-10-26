@@ -372,7 +372,7 @@ namespace WUK83Q_HFT_202223.WPFClient
 
                 #endregion
 
-                #region
+                #region NONCRUD
                 coll1 = new ObservableCollection<Auto>();
                 coll2 = new ObservableCollection<Auto>();
                 coll3 = new ObservableCollection<Auto>();
