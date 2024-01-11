@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WUK83Q_HFT_202223.WPFClient"
         mc:Ignorable="d"
-        Title="Concern Database" Height="450" Width="800">
+        Title="Concern Database" Height="550" Width="800">
     <Window.DataContext>
-        <local:MainWindowViewModel/>
+        <local:ConcernWindowViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -21,18 +21,24 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1" DataContext="{Binding SelectedConcern}">
+        <StackPanel Grid.Column="1" Background="Azure">
 
             <Label Content="Concern Informations" Background="LightBlue" Padding="10"/>
-            <Label Content="{Binding ConcernId}" Padding="8"/>
-            <Label Content="{Binding ConcernName}" Padding="8"/>
-            <Label Content="{Binding BornOfConcern}" Padding="8"/>
-            <Label Content="{Binding CountryOfConcern}" Padding="8"/>
-            <Label Content="{Binding PositionInRanking}" Padding="8"/>
+            <Label Content="Concern Id" Padding="5"/>
+            <TextBox Text="{Binding SelectedConcern.ConcernId}" Padding="5"/>
+            <Label Content="Concern Name" Padding="5"/>
+            <TextBox Text="{Binding SelectedConcern.ConcernName}" Padding="5"/>
+            <Label Content="Born of the concern" Padding="5"/>
+            <TextBox Text="{Binding SelectedConcern.BornOfConcern}" Padding="5"/>
+            <Label Content="Country of the concern" Padding="5"/>
+            <TextBox Text="{Binding SelectedConcern.CountryOfConcern}" Padding="5"/>
+            <Label Content="Position in world rankings" Padding="5"/>
+            <TextBox Text="{Binding SelectedConcern.PositionInRanking}" Padding="5"/>
             <!--<TextBox Text="{Binding Type}" Padding="10" Margin="0,0,0,30"/>-->
             <Button Content="Create Concern" Command="{Binding CreateConcernCommand}" Margin="10" Padding="5"/>
             <Button Content="Update Concern" Command="{Binding UpdateConcernCommand}" Margin="10" Padding="5"/>
             <Button Content="Delete Concern" Command="{Binding DeleteConcernCommand}" Margin="10" Padding="5"/>
+            <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
         </StackPanel>
     </Grid>
 </Window>

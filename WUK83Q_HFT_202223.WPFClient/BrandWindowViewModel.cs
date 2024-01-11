@@ -30,8 +30,6 @@ namespace WUK83Q_HFT_202223.WPFClient
 
         private Brand selectedBrand;
 
-        
-
         public Brand SelectedBrand
         {
             get => selectedBrand;
@@ -70,7 +68,51 @@ namespace WUK83Q_HFT_202223.WPFClient
 
         public BrandWindowViewModel()
         {
+            if (!IsInDesignMode)
+            {
+                #region Brand
 
+                Brands = new RestCollection<Brand>("http://localhost:21840/", "brand", "hub");
+                CreateBrandCommand = new RelayCommand(() =>
+                {
+                    Brands.Add(new Brand()
+                    {
+                        BrandId = SelectedBrand.BrandId,
+                        BrandName = SelectedBrand.BrandName,
+                        OriginOfBrand = SelectedBrand.OriginOfBrand,
+                        BornOfBrand = SelectedBrand.BornOfBrand,
+                        IsProducingFullyElectricCars = SelectedBrand.IsProducingFullyElectricCars,
+                        HasFormula1Team = SelectedBrand.HasFormula1Team,
+                        ConcernId = SelectedBrand.ConcernId,
+
+                    });
+                });
+
+                UpdateBrandCommand = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Brands.Update(SelectedBrand);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        ErrorMessage = ex.Message;
+                    }
+                });
+
+                DeleteBrandCommand = new RelayCommand(() =>
+                {
+                    Brands.Delete(SelectedBrand.BrandId);
+                }
+                , () =>
+                {
+                    return SelectedBrand != null;
+                }
+                );
+
+                SelectedBrand = new Brand();
+                #endregion
+            }
         }
     }
 }

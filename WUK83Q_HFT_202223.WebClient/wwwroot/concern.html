@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Concern window</title>
+    <link href="concernStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Concern Catalog</h1>
+    <button onclick="backtomain()">Back To Main</button>
+    <div id="concernformdiv">
+        <label>Concern ID</label>s
+        <input type="text" id="concernId" />
+        <label>Concern Name</label>s
+        <input type="text" id="concernName" />
+        <label>Born of the concern</label>s
+        <input type="text" id="bornOfConcern" />
+        <label>Country of the cocern</label>s
+        <input type="text" id="countryOfConcern" />
+        <label>Position in ranking</label>s
+        <input type="text" id="positionInRanking" />
+
+        <button type="button" onclick="create()">Add Concern</button>
+    </div>
+    <div id="concerntoupdateformdiv">
+        <label>Concern Name</label>
+        <input type="text" id="concernnametoupdate" />
+        <label>Born of concern</label>
+        <input type="text" id="bornOfConcernToUpdate" />
+        <label>Country of concern</label>
+        <input type="text" id="countryOfConcernToUpdate" />
+        <label>Position in ranking</label>
+        <input type="text" id="positionInRankingToUpdate" />
+
+        <button type="button" onclick="update()">Update Concern</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Concern ID</th>
+                <th>Concern Name</th>
+                <th>Born of concern</th>
+                <th>Country of concern</th>
+                <th>Position in Ranking</th>
+            </tr>
+        </thead>
+        <tbody id="resultareaconcern">
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="concernScript.js"></script>
+</body>
+</html>

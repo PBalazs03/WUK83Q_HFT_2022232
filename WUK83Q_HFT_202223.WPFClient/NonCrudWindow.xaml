@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WUK83Q_HFT_202223.WPFClient"
         mc:Ignorable="d"
-        Title="NonCrudWindow" Height="500" Width="700">
-    <Window.Effect>
+        Title="NonCrudWindow" Height="350" Width="220">
+    <Window.DataContext>
+        <local:NonCrudWindowViewModel/>
+    </Window.DataContext>
+        <Window.Effect>
         <DropShadowEffect/>
     </Window.Effect>
     
@@ -24,69 +27,19 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-
 
 
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" DataContext="{Binding}">
             <Label Content="NON-CRUD Methods" Background="LightBlue" Padding="10"/>
-            <Button Content="Average age of cars" Command="{Binding NONCRUD1command}" Margin="10" Padding="5"  HorizontalAlignment="Left" Width="200" Height="27.96"/>
-            <Button Content="Youngest or oldest car" Command="{Binding NONCRUD2command}" Margin="10" Padding="5" HorizontalAlignment="Left" Width="200" Height="27.96"/>
-            <Button Content="Brand with the most cars" Command="{Binding NONCRUD3command}" Margin="10" Padding="5" HorizontalAlignment="Left" Width="200" Height="27.96"/>
-            <Button Content="Models of the brand" Command="{Binding NONCRUD4command}" Margin="10" Padding="5" HorizontalAlignment="Left" Width="200" Height="27.96"/>
-            <Button Content="Brands of concern" Command="{Binding NONCRUD5command}"  Margin="10" Padding="5" HorizontalAlignment="Left" Width="200" Height="27.96"/>
-            <Button Content="Concern which have the most brand" Command="{Binding NONCRUD6command}"  Margin="10" Padding="5" HorizontalAlignment="Left" Width="200" Height="27.96"/>
-            <Button Content="Country of the concern" Command="{Binding NONCRUD7command}"  Margin="10" Padding="5" HorizontalAlignment="Left" Width="200" Height="27.96"/>
-            <Button Content="Listing the concerns" Command="{Binding NONCRUD8command}"  Margin="10" Padding="5" HorizontalAlignment="Left" Width="200" Height="27.96"/>
-            <Button Content="Owner with the most cars" Command="{Binding NONCRUD9command}"  Margin="10" Padding="5" HorizontalAlignment="Left" Width="200" Height="27.96"/>
+            <Button Content="Average age of cars"  Margin="10" Padding="5"  HorizontalAlignment="Left" Width="200" Height="27.96" Click="Button_Click"/>
+            <Button Content="Youngest or oldest car"  Margin="10" Padding="5" HorizontalAlignment="Left" Width="200" Height="27.96" Click="Button_Click_1"/>
+            <Button Content="Brand with the most cars"  Margin="10" Padding="5" HorizontalAlignment="Left" Width="200" Height="27.96" Click="Button_Click_2"/>
+            <Button Content="Models of the brand" Margin="10" Padding="5" HorizontalAlignment="Left" Width="200" Height="27.96" Click="Button_Click_3"/>
+            <Button Content="Concern which have the most brand"  Margin="10" Padding="5" HorizontalAlignment="Left" Width="200" Height="27.96" Click="Button_Click_5"/>
+            
         </StackPanel>
-        <StackPanel Grid.Column="1">
-            <Label Content="" Background="LightBlue" Padding="10"/>
-            <Label Margin="10" Padding="5" HorizontalAlignment="Center" Width="200" Height="27.96"/>
-            <TextBlock Text="{Binding}" Margin="10" Padding="5" HorizontalAlignment="Center" Width="200" Height="27.96"/>
-            <Label Margin="10" Padding="5" HorizontalAlignment="Center" Width="200" Height="27.96"/>
-            <TextBlock Text="{Binding}" Margin="10" Padding="5" HorizontalAlignment="Center" Width="200" Height="27.96"/>
-            <TextBlock Text="{Binding}" Margin="10" Padding="5" HorizontalAlignment="Center" Width="200" Height="27.96"/>
-            <Label Margin="10" Padding="5" HorizontalAlignment="Center" Width="200" Height="27.96"/>
-            <TextBlock Text="{Binding}" Margin="10" Padding="5" HorizontalAlignment="Center" Width="200" Height="27.96"/>
-            <TextBlock Text="{Binding}" Margin="10" Padding="5" HorizontalAlignment="Center" Width="200" Height="27.96"/>
-            <Label Margin="10" Padding="5" HorizontalAlignment="Center" Width="200" Height="27.96"/>
-
-
-        </StackPanel>
+       
         
-        <StackPanel Grid.Column="2" DataContext="">
-            <Label Content="" Background="LightBlue" Padding="10"/>
-            <Label Content="{Binding NONCRUD1command}" Margin="10" Padding="5" HorizontalAlignment="Center" Width="200" Height="27.96" BorderBrush="Black"/>
-            <Label Content="{Binding NONCRUD2command}" Margin="10" Padding="5"  HorizontalAlignment="Center" Width="200" Height="27.96" BorderBrush="Black"/>
-            <Label Content="{Binding NONCRUD3command}" Margin="10" Padding="5"  HorizontalAlignment="Center" Width="200" Height="27.96" BorderBrush="Black"/>
-            <Label Content="{Binding NONCRUD4command}" Margin="10" Padding="5"  HorizontalAlignment="Center" Width="200" Height="27.96" BorderBrush="Black"/>
-            <Label Content="{Binding NONCRUD5command}" Margin="10" Padding="5"  HorizontalAlignment="Center" Width="200" Height="27.96" BorderBrush="Black"/>
-            <Label Content="{Binding NONCRUD6command}" Margin="10" Padding="5"  HorizontalAlignment="Center" Width="200" Height="27.96" BorderBrush="Black"/>
-            <Label Content="{Binding NONCRUD7command}" Margin="10" Padding="5"  HorizontalAlignment="Center" Width="200" Height="27.96" BorderBrush="Black"/>
-            <Label Content="{Binding NONCRUD8command}" Margin="10" Padding="5"  HorizontalAlignment="Center" Width="200" Height="27.96" BorderBrush="Black"/>
-            <Label Content="{Binding NONCRUD9command}" Margin="10" Padding="5"  HorizontalAlignment="Center" Width="200" Height="27.96" BorderBrush="Black"/>
-        </StackPanel>
-
-
-        <!--<StackPanel Grid.Column="1" DataContext="{Binding SelectedBrand}">
-
-            <Label Content="Brand Informations" Background="LightBlue" Padding="10"/>
-            <Label Content="{Binding BrandId}" Padding="8"/>
-            <Label Content="{Binding BrandName}" Padding="8"/>
-            <Label Content="{Binding OriginOfBrand}" Padding="8"/>
-            <Label Content="{Binding BornOfBrand}" Padding="8"/>
-            <Label Content="{Binding IsProducingFullyElectricCars}" Padding="8"/>
-            <Label Content="{Binding HasFormula1Team}" Padding="8"/>
-            <Label Content="{Binding ConcernId}" Padding="8"/>
-            -->
-        <!--<TextBox Text="{Binding Type}" Padding="10" Margin="0,0,0,30"/>-->
-        <!--
-            <Button Content="Create Brand" Command="{Binding CreateBrandCommand}" Margin="10" Padding="5"/>
-            <Button Content="Update Brand" Command="{Binding UpdateBrandCommand}" Margin="10" Padding="5"/>
-            <Button Content="Delete Brand" Command="{Binding DeleteBrandCommand}" Margin="10" Padding="5"/>
-        </StackPanel>-->
     </Grid>
 </Window>

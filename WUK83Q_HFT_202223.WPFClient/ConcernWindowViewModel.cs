@@ -26,7 +26,7 @@ namespace WUK83Q_HFT_202223.WPFClient
             set { SetProperty(ref errorMessage, value); }
         }
 
-        public RestCollection<Concern> concerns { get; set; }
+        public RestCollection<Concern> Concerns { get; set; }
 
         private Concern selectedConcern;
 
@@ -65,7 +65,47 @@ namespace WUK83Q_HFT_202223.WPFClient
 
         public ConcernWindowViewModel()
         {
+            if (!IsInDesignMode)
+            {
+                #region Concern
 
+                Concerns = new RestCollection<Concern>("http://localhost:21840/", "concern", "hub");
+                CreateConcernCommand = new RelayCommand(() =>
+                {
+                    Concerns.Add(new Concern()
+                    {
+                        ConcernId = SelectedConcern.ConcernId,
+                        ConcernName = SelectedConcern.ConcernName,
+                        BornOfConcern = SelectedConcern.BornOfConcern,
+                        CountryOfConcern = SelectedConcern.CountryOfConcern,
+                        PositionInRanking = SelectedConcern.PositionInRanking,
+                    });
+                });
+
+                UpdateConcernCommand = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Concerns.Update(SelectedConcern);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        ErrorMessage = ex.Message;
+                    }
+                });
+
+                DeleteConcernCommand = new RelayCommand(() =>
+                {
+                    Concerns.Delete(SelectedConcern.ConcernId);
+                }
+                , () =>
+                {
+                    return SelectedConcern != null;
+                }
+                );
+                SelectedConcern = new Concern();
+                #endregion
+            }
         }
 
     }

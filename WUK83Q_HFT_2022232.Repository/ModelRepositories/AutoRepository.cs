@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,26 +23,20 @@ namespace WUK83Q_HFT_2022232.Repository
 
         public override void Update(Auto item)
         {
-            var old = Read(item.AutoId);
-            
-            if (old == null)
-            {
-                
-            }
-            else
-            {
-                foreach (var prop in old.GetType().GetProperties())
-                {
-                    if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
-                    {
-                        prop.SetValue(old, prop.GetValue(item));
-                    }
+            Auto old = Read(item.AutoId);
 
+            var itemType = item.GetType();
+            foreach (var prop in typeof(Auto).GetProperties())
+            {
+                var itemProp = itemType.GetProperty(prop.Name);
+                if (itemProp != null)
+                {
+                    var newValue = itemProp.GetValue(item);
+                    prop.SetValue(old, newValue);
                 }
-                ctx.SaveChanges();
             }
-                    
-           
+
+            ctx.SaveChanges();
         }
     }
 }

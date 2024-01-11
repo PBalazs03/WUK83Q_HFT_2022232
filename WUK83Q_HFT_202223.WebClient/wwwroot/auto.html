@@ -1,0 +1,61 @@
+﻿﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="autoStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Auto Catalog</h1>
+    <button onclick="backtomain()">Back To Main</button>
+    <div id="formdiv">
+        <label>Auto ID</label>
+        <input type="text" id="autoId" />
+        <label>Auto Brand</label>
+        <input type="text" id="autoBrand" />
+        <label>Auto Type</label>
+        <input type="text" id="autoType" />
+        <label>Auto Vintage</label>
+        <input type="text" id="vintage" />
+        <label>Owner ID</label>
+        <input type="text" id="ownerId" />
+        <label>Brand ID</label>
+        <input type="text" id="brandId" />
+        <button type="button" onclick="create()">Add Auto</button>
+    </div>
+    <div id="updateformdiv">
+        <label>Auto Updater</label>
+        <label>Auto ID</label>
+        <input type="text" id="AutoIdToUpdate" />
+        <label>Auto Brand</label>
+        <input type="text" id="AutoBrandToUpdate" />
+        <label>Auto Type</label>
+        <input type="text" id="AutoTypeToUpdate" />
+        <label>Vintage</label>
+        <input type="text" id="VintageToUpdate" />
+        <label>Owner ID</label>
+        <input type="text" id="OwnerIdToUpdate" />
+        <label>Brand ID</label>
+        <input type="text" id="BrandIdToUpdate" />
+        <button type="button" onclick="update()">Update Auto</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Auto ID</th>
+                <th>Brand</th>
+                <th>Type</th>
+                <th>Vintage</th>
+                <th>Owner ID</th>
+                <th>Brand ID</th>
+            </tr>
+        </thead>
+        <tbody id="resultareaauto">
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="autoScript.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="brandSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Brand Catalog</h1>
+    <button onclick="backtomain()">Back To Main</button>
+    <div id="formdiv">
+        <label>Brand ID</label>
+        <input type="text" id="brandId" />
+        <label>Brand Name</label>
+        <input type="text" id="brandName" />
+        <label>Origin of the brand</label>
+        <input type="text" id="OriginOfBrand" />
+        <label>Born of the brand</label>
+        <input type="text" id="BornOfBrand" />
+        <label>Is Producing Fully ElectricCars</label>
+        <input type="text" id="IsProducingFullyElectricCars" />
+        <label>Has Formula 1 Team</label>
+        <input type="text" id="HasFormula1Team" />
+        <label>Concern ID</label>
+        <input type="text" id="ConcernId" />
+        <button type="button" onclick="create()">Add Brand</button>
+    </div>
+    <div id="updateformdiv">
+        <label>Brand Updater</label>
+        <label>Brand Name</label>
+        <input type="text" id="brandnametoupdate" />
+        <label>Brand origin</label>
+        <input type="text" id="originofbrandtoupdate" />
+        <label>Born of the brand</label>
+        <input type="text" id="bornofbrandtoupdate" />
+        <label>Is producing fully electric car?</label>
+        <input type="text" id="isproducingfullyelectriccartoupdate" />
+        <label>Has Formula 1 Team</label>
+        <input type="text" id="hasformula1teamtoupdate" />
+        <label>Concern ID</label>
+        <input type="text" id="concernidtoupdate" />
+
+        <button type="button" onclick="update()">Update Brand</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Brand ID</th>
+                <th>Brand Name</th>
+                <th>Origin of the brand</th>
+                <th>Born of the brand</th>
+                <th>Is Producing Fully ElectricCars</th>
+                <th>Has Formula 1 Team</th>
+                <th>Concern ID</th>
+            </tr>
+        </thead>
+        <tbody id="resultareabrand">
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="brandScript.js"></script>
+</body>
+</html>

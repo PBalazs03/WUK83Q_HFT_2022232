@@ -1,0 +1,99 @@
+﻿﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>NONCRUD</title>
+    <link href="noncrudStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <button onclick="backtomain()">Back To Main</button>
+    <h1>Statistical Catalog</h1>
+
+    <div class="input-group">
+        <input type="text" id="yooInput" placeholder="Enter y or o">
+        <button onclick="ReadYoungestOrOldestCar()">Youngest or oldest car</button>
+    </div>
+    <br />
+    <div class="input-group">
+        <input type="text" placeholder="Enter brand name">
+        <button onclick="ReadModelsOfTheBrand()">Get type of the brand</button>
+    </div>
+    <br />
+    <div class="button-group">
+        <button onclick="ReadAvgCarAge()">Average vintage of the cars</button>
+        <br />
+        <button onclick="ReadBrandWithTheMostCars()">Brand with the most cars</button>
+        <br />
+        <button onclick="ReadConcernWithTheMostBrand()">Concern with the most brand</button>
+
+    </div>
+    <br />
+    <br />
+    <div id="nocrudResults" style="display: none;">
+        <div>statisticsTitle</div>
+        <div id="NonCrudYOOC()" style="display: none;"></div>
+        <div id="NonCrudRMOTB()" style="display: none;"></div>
+        <div id="NonCrudAvgCarAge()" style="display: none;"></div>
+        <div id="NonCrudBrandWTMC()" style="display: none"></div>
+        <div id="NonCrudConcernWTMB()" style="display: none"></div>
+    </div>
+
+    <div id="NonCrudYOOCandRMOTBFORM1">
+        <table>
+            <thead>
+                <tr>
+                    <th>Auto ID</th>
+                    <th>Brand</th>
+                    <th>Type</th>
+                    <th>Vintage</th>
+                    <th>Owner ID</th>
+                    <th>Brand ID</th>
+                </tr>
+            </thead>
+            <tbody id="resultNoNCrudYOOCandRMOTB">
+            </tbody>
+        </table>
+    </div>
+
+
+    <div id="NonCrudAvgCarAgeFORM3" style="display:none">
+        <table>
+            <thead>
+                <tr>
+                    <th>AvgCarAge</th>
+                </tr>
+            </thead>
+            <tbody id="resultNoNCrudAvgCarAge">
+            </tbody>
+        </table>
+    </div>
+
+    <div id="NonCrudBrandWTMCFORM4" style="display:none">
+        <table>
+            <thead>
+                <tr>
+                    
+                    <th>Brand Name</th>
+                </tr>
+            </thead>
+            <tbody id="resultNoNCrudBrandWTMC">
+            </tbody>
+        </table>
+    </div>
+
+    <div id="NonCrudConcernWTMBFORM5" style="display:none">
+        <table>
+            <thead>
+                <tr>
+                    <th>Concern with the most brand</th>
+                </tr>
+            </thead>
+            <tbody id="resultNoNCrudBrandWTMC">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="noncrudScript.js"></script>
+</body>
+</html>

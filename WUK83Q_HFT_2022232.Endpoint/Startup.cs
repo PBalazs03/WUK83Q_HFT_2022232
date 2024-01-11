@@ -74,6 +74,7 @@ namespace WUK83Q_HFT_2022232.Endpoint
             app.UseCors(x => x.AllowCredentials().AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:19556"));
 
             app.UseRouting();
+            app.UseAuthorization();
 
             //app.UseAuthorization();
 

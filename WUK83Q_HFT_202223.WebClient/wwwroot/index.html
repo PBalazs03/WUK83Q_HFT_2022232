@@ -4,16 +4,27 @@
 <head>
     <meta charset="utf-8" />
     <title>Main Page</title>
-    <link href="indexstyle.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>WELCOME</h1>
+    <h1>Tables</h1>
     <div id="buttons">
         <button onclick="loadAutoPage()">Auto</button>
         <button onclick="loadBrandPage()">Brand</button>
         <button onclick="loadConcernPage()">Concern</button>
         <button onclick="loadOwnerPage()">Owner</button>
+        <button onclick="loadStaticticsPage()">Statistics</button>
     </div>
+
+    <h3>Non-Crud Methods</h3>
+    <div>
+        <button onclick="window.location.href='/Non-Crud/AvgCarVintage.html'">Average car vintage</button>
+        <button onclick="window.location.href='/Non-Crud/BrandWithTheMostCars.html'">Brand with the most cars</button>
+        <button onclick="window.location.href='/Non-Crud/ConcernWithTheMostBrands.html'">Concern with the most brands</button>
+        <button onclick="window.location.href='/Non-Crud/ModelsOfBrand.html'">Youngest or oldest car</button>
+        <button onclick="window.location.href='/Non-Crud/YoungestOrOldestCar.html'">Models of the brand</button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

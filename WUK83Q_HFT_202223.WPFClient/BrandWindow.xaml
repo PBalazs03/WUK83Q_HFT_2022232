@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WUK83Q_HFT_202223.WPFClient"
         mc:Ignorable="d"
-        Title="Brand Database" Height="450" Width="800">
+        Title="Brand Database" Height="550" Width="800">
     <Window.DataContext>
-        <local:MainWindowViewModel/>
+        <local:BrandWindowViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -21,20 +21,28 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1" DataContext="{Binding SelectedBrand}">
+        <StackPanel Grid.Column="1" Background="Azure">
 
             <Label Content="Brand Informations" Background="LightBlue" Padding="10"/>
-            <Label Content="{Binding BrandId}" Padding="8"/>
-            <Label Content="{Binding BrandName}" Padding="8"/>
-            <Label Content="{Binding OriginOfBrand}" Padding="8"/>
-            <Label Content="{Binding BornOfBrand}" Padding="8"/>
-            <Label Content="{Binding IsProducingFullyElectricCars}" Padding="8"/>
-            <Label Content="{Binding HasFormula1Team}" Padding="8"/>
-            <Label Content="{Binding ConcernId}" Padding="8"/>
+            <Label Content="Brand Id" Padding="5"/>
+            <TextBox Text="{Binding SelectedBrand.BrandId}" Padding="5"/>
+            <Label Content="Name of the brand" Padding="5"/>
+            <TextBox Text="{Binding SelectedBrand.BrandName}" Padding="5"/>
+            <Label Content="Origin of the brand" Padding="5"/>
+            <TextBox Text="{Binding SelectedBrand.OriginOfBrand}" Padding="5"/>
+            <Label Content="Born of the brand" Padding="5"/>
+            <TextBox Text="{Binding SelectedBrand.BornOfBrand}" Padding="5"/>
+            <Label Content="Is the brand producing fully electric cars?" Padding="5"/>
+            <Label Content="{Binding SelectedBrand.IsProducingFullyElectricCars}" Padding="5"/>
+            <Label Content="Has the brand Formula 1 team?" Padding="5"/>
+            <TextBox Text="{Binding SelectedBrand.HasFormula1Team}" Padding="5"/>
+            <Label Content="Concern Id" Padding="5"/>
+            <TextBox Text="{Binding SelectedBrand.ConcernId}" Padding="5"/>
             <!--<TextBox Text="{Binding Type}" Padding="10" Margin="0,0,0,30"/>-->
             <Button Content="Create Brand" Command="{Binding CreateBrandCommand}" Margin="10" Padding="5"/>
             <Button Content="Update Brand" Command="{Binding UpdateBrandCommand}" Margin="10" Padding="5"/>
             <Button Content="Delete Brand" Command="{Binding DeleteBrandCommand}" Margin="10" Padding="5"/>
+            <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
         </StackPanel>
     </Grid>
 </Window>

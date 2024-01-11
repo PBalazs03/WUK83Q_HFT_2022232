@@ -26,9 +26,9 @@ namespace WUK83Q_HFT_202223.WebClient
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
-
             app.UseStaticFiles();
+
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {

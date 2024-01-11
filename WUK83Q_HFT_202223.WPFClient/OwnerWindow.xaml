@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WUK83Q_HFT_202223.WPFClient"
         mc:Ignorable="d"
-        Title="Owner Database" Height="450" Width="800">
+        Title="Owner Database" Height="550" Width="800">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
@@ -21,18 +21,23 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1" DataContext="{Binding SelectedOwner}">
+        <StackPanel Grid.Column="1" Background="Azure">
 
             <Label Content="Owner Informations" Background="LightBlue" Padding="10"/>
-            <Label Content="{Binding OwnerId}" Padding="8"/>
-            <Label Content="{Binding Name}" Padding="8"/>
-            <Label Content="{Binding BirthDate}" Padding="8"/>
-            <Label Content="{Binding BirthPlace}" Padding="8"/>
+            <Label Content="Owner Id" Padding="5"/>
+            <TextBox Text="{Binding SelectedOwner.OwnerId}" Padding="5"/>
+            <Label Content="Name" Padding="5"/>
+            <TextBox Text="{Binding SelectedOwner.Name}" Padding="5"/>
+            <Label Content="Birth Date" Padding="5"/>
+            <TextBox Text="{Binding SelectedOwner.BirthDate}" Padding="5"/>
+            <Label Content="Birth Place" Padding="5"/>
+            <TextBox Text="{Binding SelectedOwner.BirthPlace}" Padding="5"/>
             
             <!--<TextBox Text="{Binding Type}" Padding="10" Margin="0,0,0,30"/>-->
             <Button Content="Create Owner" Command="{Binding CreateOwnerCommand}" Margin="10" Padding="5"/>
             <Button Content="Update Owner" Command="{Binding UpdateOwnerCommand}" Margin="10" Padding="5"/>
             <Button Content="Delete Owner" Command="{Binding DeleteOwnerCommand}" Margin="10" Padding="5"/>
+            <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
         </StackPanel>
     </Grid>
 </Window>

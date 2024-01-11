@@ -40,10 +40,11 @@ namespace WUK83Q_HFT_202223.WPFClient
                 {
                     selectedOwner = new Owner()
                     {
+                        OwnerId = value.OwnerId,
                         Name = value.Name,
                         BirthDate = value.BirthDate,
-                        BirthPlace = value.BirthPlace,
-                        OwnerId = value.OwnerId
+                        BirthPlace = value.BirthPlace
+                        
                     };
                     OnPropertyChanged();
                     (DeleteOwnerCommand as RelayCommand).NotifyCanExecuteChanged();
@@ -65,7 +66,49 @@ namespace WUK83Q_HFT_202223.WPFClient
 
         public OwnerWindowViewModel()
         {
+            if (!IsInDesignMode)
+            {
+                #region Owner
 
+                Owners = new RestCollection<Owner>("http://localhost:21840/", "owner", "hub");
+
+                CreateOwnerCommand = new RelayCommand(() =>
+                {
+                    Owners.Add(new Owner()
+                    {
+                        OwnerId = SelectedOwner.OwnerId,
+                        Name = SelectedOwner.Name,
+                        BirthDate = SelectedOwner.BirthDate,
+                        BirthPlace = SelectedOwner.BirthPlace,
+
+                    });
+                });
+
+                UpdateOwnerCommand = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Owners.Update(SelectedOwner);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        ErrorMessage = ex.Message;
+                    }
+                });
+
+                DeleteOwnerCommand = new RelayCommand(() =>
+                {
+                    Owners.Delete(SelectedOwner.OwnerId);
+                }
+                , () =>
+                {
+                    return SelectedOwner != null;
+                }
+                );
+                SelectedOwner = new Owner();
+
+                #endregion
+            }
         }
     }
 }

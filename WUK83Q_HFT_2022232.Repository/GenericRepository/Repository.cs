@@ -27,6 +27,7 @@ namespace WUK83Q_HFT_2022232.Repository
 
         public void Delete(int id)
         {
+            
             ctx.Set<T>().Remove(Read(id));
             ctx.SaveChanges();
         }

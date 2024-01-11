@@ -219,7 +219,9 @@ namespace WUK83Q_HFT_202223.WpfClient
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsAsync<RestExceptionInfo>();
-                throw new ArgumentException(error.Msg);
+                
+                //throw new ArgumentException(error.Msg);
+
             }
 
             response.EnsureSuccessStatusCode();

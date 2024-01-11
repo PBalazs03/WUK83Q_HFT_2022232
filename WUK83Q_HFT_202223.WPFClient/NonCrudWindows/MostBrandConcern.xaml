@@ -1,0 +1,17 @@
+﻿<Window x:Class="WUK83Q_HFT_202223.WPFClient.NonCrudWindows.MostBrandConcern"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WUK83Q_HFT_202223.WPFClient.NonCrudWindows" xmlns:local1="clr-namespace:WUK83Q_HFT_202223.WPFClient"
+        mc:Ignorable="d"
+        Title="MostBrandConcern" Height="450" Width="400">
+    <Window.DataContext>
+        <local1:NonCrudWindowViewModel/>
+    </Window.DataContext>
+    
+    <Grid>
+        <Button Content="Concern which has the most brands" Command="{Binding MostBrandConcernCommand}" Margin="10,53,10,323" Padding="5"/>
+        <TextBlock Text="{Binding ConcerName}" Padding="5" Margin="0,140,0,86"/>
+    </Grid>
+</Window>

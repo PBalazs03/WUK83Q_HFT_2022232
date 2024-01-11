@@ -1,19 +1,15 @@
-﻿let autos = [];
-
-fetch('http://localhost:21840/auto')
-    .then(x => x.json())
-    .then(y => {
-        autos = y;
-        console.log(autos);
-        display();
-    });
-
-
-
-function display() {
-    autos.forEach(t => {
-        document.getElementById('resultarea').innerHTML +=
-            "<tr><td>" + t.AutoId + "</td><td>" + t.Brand + "</td><td>" + t.Type + "</td><td>" + t.Vintage + "</td><td>" + t.OwnerId + "</td></tr>";
-        console.log(t.AutoId)
-    });
+﻿function loadAutoPage() {
+    window.location.assign("auto.html");
+}
+function loadBrandPage() {
+    window.location.assign("brand.html");
+}
+function loadConcernPage() {
+    window.location.assign("concern.html");
+}
+function loadOwnerPage() {
+    window.location.assign("owner.html");
+}
+function loadStaticticsPage() {
+    window.location.assign("noncrud.html");
 }

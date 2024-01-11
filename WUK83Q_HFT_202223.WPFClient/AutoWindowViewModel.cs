@@ -66,20 +66,49 @@ namespace WUK83Q_HFT_202223.WPFClient
         }
         public AutoWindowViewModel()
         {
-            ///*            rest = new RestService("http://localhost:25922/");
-            //processorsCRUD1 = rest.Get<Processor>("Statistics/z790ProcessorsWith10Core");*/
+            if (!IsInDesignMode)
+            {
+                #region Auto
+                Autos = new RestCollection<Auto>("http://localhost:21840/", "auto", "hub");
+                CreateAutoCommand = new RelayCommand(() =>
+                {
+                    Autos.Add(new Auto()
+                    {
+                        AutoId = SelectedAuto.AutoId,
+                        Brand = SelectedAuto.Brand,
+                        Type = SelectedAuto.Type,
+                        Vintage = SelectedAuto.Vintage,
+                        OwnerId = SelectedAuto.OwnerId,
+                        BrandId = SelectedAuto.BrandId,
+                    }) ;
+                });
 
-            //if (!IsInDesignMode)
-            //{
-            //    Autos = new RestCollection<Auto>("", "auto", );
-            //    CreateAutoCommand = new RelayCommand(() =>
-            //    {
-            //        Autos.Add(new Auto() 
-            //        {
-                        
-            //        });
-            //    });
-            //}
+                UpdateAutoCommand = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        Autos.Update(SelectedAuto);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        ErrorMessage = ex.Message;
+                    }
+                });
+
+                DeleteAutoCommand = new RelayCommand(() =>
+                {
+                    Autos.Delete(SelectedAuto.AutoId);
+                }
+                , () =>
+                {
+                    return SelectedAuto != null;
+                }
+                );
+
+                SelectedAuto = new Auto();
+                #endregion
+            }
+
         }
     }
 }
