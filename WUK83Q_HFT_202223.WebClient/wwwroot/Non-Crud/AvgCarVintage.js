@@ -1,4 +1,8 @@
-﻿let data = []
+﻿function backtomain() {
+    window.location.assign("index.html");
+}
+
+let data = []
 
 getdata();
 
@@ -7,6 +11,7 @@ async function getdata() {
         .then(x => x.json())
         .then(y => {
             data = y;
+            console.log(data)
             display();
         });
 }
@@ -16,6 +21,6 @@ function display() {
     data.forEach(d => {
         document.getElementById('resultNoNCrudAvgCarAge').innerHTML +=
             "<tr><td>"
-            + d.data + "</td></tr>";
+            + d.y + "</td></tr>";
     });
 }

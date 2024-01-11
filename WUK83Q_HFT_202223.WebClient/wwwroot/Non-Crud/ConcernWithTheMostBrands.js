@@ -7,6 +7,7 @@ async function getdata() {
         .then(x => x.json())
         .then(y => {
             data = y;
+            console.log(data)
             display();
         });
 }
